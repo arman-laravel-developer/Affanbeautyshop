@@ -135,103 +135,108 @@
         <div class="container">
             <div class="product-details-top">
                 <div class="row">
-                    <div class="col-md-6">
-    <div class="product-gallery d-flex flex-row-reverse gap-3 flex-wrap flex-md-nowrap">
-        <!-- Main Product Image -->
-        <figure class="product-main-image flex-grow-1 mb-0">
-            <img id="product-zoom" src="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}" alt="product image" class="img-fluid w-100">
-            <a href="#" id="btn-product-gallery" class="btn-product-gallery d-none d-md-inline-block mt-2">
-                <i class="icon-arrows"></i>
-            </a>
-        </figure>
+                    <!-- Mobile Version -->
+                    <div class="col-md-6 mobile-view">
+                        <div class="product-gallery">
+                            <figure class="product-main-image">
+                                <img src="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}" alt="product image">
 
-        <!-- Thumbnail Gallery on the Left -->
-        <div id="product-zoom-gallery" class="product-image-gallery d-flex flex-md-column gap-2" style="width: 80px;">
-            <!-- Main thumbnail -->
-            <a class="product-gallery-item zoom-image active" href="#"
-               data-image="{{ asset($product->thumbnail_img) }}"
-               data-zoom-image="{{ asset($product->thumbnail_img) }}">
-                <img src="{{ asset($product->thumbnail_img) }}" alt="product side" class="img-fluid">
-            </a>
+{{--                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">--}}
+{{--                                    <i class="icon-arrows"></i>--}}
+{{--                                </a>--}}
+                            </figure><!-- End .product-main-image -->
 
-            <!-- Variant images -->
-            @if($product->variants->where('color_id', '!=', null)->unique('color_id')->count() > 0)
-                @foreach($product->variants->where('color_id', '!=', null)->unique('color_id') as $variantImage)
-                    @if ($variantImage->image !== $product->thumbnail_img)
-                        <a class="product-gallery-item zoom-image" href="#"
-                           data-image="{{ asset($variantImage->image) }}"
-                           data-zoom-image="{{ asset($variantImage->image) }}">
-                            <img src="{{ asset($variantImage->image) }}" alt="product side" class="img-fluid">
-                        </a>
-                    @endif
-                @endforeach
-            @else
-                @foreach($product->otherImages as $otherImage)
-                    @if ($otherImage->gellery_image !== $product->thumbnail_img)
-                        <a class="product-gallery-item zoom-image" href="#"
-                           data-image="{{ asset($otherImage->gellery_image) }}"
-                           data-zoom-image="{{ asset($otherImage->gellery_image) }}">
-                            <img src="{{ asset($otherImage->gellery_image) }}" alt="product side" class="img-fluid">
-                        </a>
-                    @endif
-                @endforeach
-            @endif
-        </div>
-    </div>
-</div>
+                            <div class="product-image-gallery">
+                                <a class="product-gallery-item zoom-image" href="#"
+                                   data-image="{{ asset($product->thumbnail_img) }}"
+                                   data-zoom-image="{{ asset($product->thumbnail_img) }}">
+                                    <img src="{{ asset($product->thumbnail_img) }}" alt="product side">
+                                </a>
+                                @if($product->variants->where('color_id', '!=', null)->unique('color_id')->count() > 0)
+                                    @foreach($product->variants->where('color_id', '!=', null)->unique('color_id') as $variantImage)
+                                        @if ($variantImage->image !== $product->thumbnail_img)
+                                            <a class="product-gallery-item zoom-image" href="#" data-image="{{ asset($variantImage->image) }}" data-zoom-image="{{ asset($variantImage->image) }}">
+                                                <img src="{{ asset($variantImage->image) }}" alt="product side">
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @foreach($product->otherImages as $otherImage)
+                                        @if ($otherImage->gellery_image !== $product->thumbnail_img)
+                                            <a class="product-gallery-item zoom-image" href="#"
+                                               data-image="{{ asset($otherImage->gellery_image) }}"
+                                               data-zoom-image="{{ asset($otherImage->gellery_image) }}">
+                                                <img src="{{ asset($otherImage->gellery_image) }}" alt="product side">
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </div><!-- End .product-image-gallery -->
+                        </div><!-- End .product-gallery -->
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                        <!-- Add jQuery -->
+                        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-<!-- Zoom Image Click Script -->
-<script>
-    $(document).ready(function () {
-        $('.zoom-image').on('click', function (e) {
-            e.preventDefault();
+                        <!-- Add Script -->
+                        <script>
+                            $(document).ready(function () {
+                                // Listen for clicks on gallery items
+                                $('.zoom-image').on('click', function (e) {
+                                    e.preventDefault();
 
-            let newImage = $(this).data('image');
-            let zoomImage = $(this).data('zoom-image');
+                                    // Get the clicked image's data attributes
+                                    let newImage = $(this).data('image');         // Image URL for the main display
+                                    let zoomImage = $(this).data('zoom-image');   // Image URL for zoom effect
 
-            $('.product-main-image img').attr('src', newImage);
-            $('.product-main-image img').attr('data-zoom-image', zoomImage);
+                                    // Update the main image and its zoom image
+                                    $('.product-main-image img').attr('src', newImage);
+                                    $('.product-main-image img').attr('data-zoom-image', zoomImage);
 
-            $('.zoom-image').removeClass('active');
-            $(this).addClass('active');
-        });
-    });
-</script>
+                                    // Remove "active" class from all gallery items
+                                    $('.zoom-image').removeClass('active');
 
-<!-- Custom CSS -->
-<style>
-    .product-gallery img {
-        border-radius: 6px;
-        border: 1px solid #ddd;
-        cursor: pointer;
-        transition: border 0.3s ease;
-    }
+                                    // Add "active" class to the clicked item
+                                    $(this).addClass('active');
+                                });
+                            });
+                        </script>
+                    </div><!-- End .col-md-6 -->
 
-    .product-gallery .zoom-image.active img {
-        border: 2px solid #007bff;
-    }
+                    <!-- Desktop Version -->
+                    <div class="col-md-6 desktop-view">
+                        <div class="product-gallery">
+                            <figure class="product-main-image">
+                                <img id="product-zoom" src="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}" alt="product image">
 
-    @media (max-width: 767px) {
-        .product-gallery {
-            flex-direction: column-reverse !important;
-        }
+                                <a href="#" id="btn-product-gallery" class="btn-product-gallery">
+                                    <i class="icon-arrows"></i>
+                                </a>
+                            </figure><!-- End .product-main-image -->
 
-        #product-zoom-gallery {
-            flex-direction: row !important;
-            flex-wrap: wrap;
-            justify-content: center;
-            width: 100% !important;
-        }
-
-        #product-zoom-gallery a {
-            max-width: 70px;
-        }
-    }
-</style>
-
+                            <div id="product-zoom-gallery" class="product-image-gallery">
+                                <a class="product-gallery-item" style="max-width: 20% !important;" href="#" data-image="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}">
+                                    <img src="{{ asset($product->thumbnail_img) }}" alt="product side">
+                                </a>
+                                @if($product->variants->where('color_id', '!=', null)->unique('color_id')->count() > 0)
+                                    @foreach($product->variants->where('color_id', '!=', null)->unique('color_id') as $variantImage)
+                                        @if ($variantImage->image !== $product->thumbnail_img)
+                                            <a class="product-gallery-item zoom-image" style="max-width: 20% !important;" href="#" data-image="{{ asset($variantImage->image) }}" data-zoom-image="{{ asset($variantImage->image) }}">
+                                                <img src="{{ asset($variantImage->image) }}" alt="product side">
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    @foreach($product->otherImages as $otherImage)
+                                        @if ($otherImage->gellery_image !== $product->thumbnail_img)
+                                            <a class="product-gallery-item" style="max-width: 20% !important;" href="#" data-image="{{ asset($otherImage->gellery_image) }}" data-zoom-image="{{ asset($otherImage->gellery_image) }}">
+                                                <img src="{{ asset($otherImage->gellery_image) }}" alt="product side">
+                                            </a>
+                                        @endif
+                                    @endforeach
+                                @endif
+                            </div><!-- End .product-image-gallery -->
+                        </div><!-- End .product-gallery -->
+                    </div><!-- End .col-md-6 -->
 
                     <div class="col-md-6">
                         <div class="product-details">
