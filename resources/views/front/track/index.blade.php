@@ -1,7 +1,7 @@
 @extends('front.master')
 
 @section('title')
-    {{$generalSettingView->site_name}} - অর্ডার ট্র্যাক করুন
+    {{$generalSettingView->site_name}} - Track Your Order
 @endsection
 
 @section('body')
@@ -32,15 +32,15 @@
 
     <div class="page-header text-center" style="background-image: url('{{asset('/')}}front/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title">অর্ডার ট্র্যাক করুন</h1>
+            <h1 class="page-title">Track Your Order</h1>
         </div>
     </div>
 
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
-                <li class="breadcrumb-item active" aria-current="page">অর্ডার ট্র্যাক করুন</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Track Your Order</li>
             </ol>
         </div>
     </nav>
@@ -54,11 +54,11 @@
                         <div class="card-body">
                             <form id="orderForm" action="{{route('show.track-result')}}" method="GET">
                                 <div class="form-group">
-                                    <label for="order-id">অর্ডার কোড</label>
+                                    <label for="order-id">Order Code</label>
                                     <input type="text" class="form-control" name="order_code" id="order-id" placeholder="xxxxxx-xxxxxx-xxxxx" maxlength="19">
-                                    <small id="error-message" style="color: red; display: none;">অর্ডার কোডটি অবশ্যই ১৭ সংখ্যার হতে হবে।</small>
+                                    <small id="error-message" style="color: red; display: none;">The order code must be exactly 17 digits long.</small>
                                 </div>
-                                <button type="submit" class="btn btn-primary btn-block">ট্র্যাক করুন</button>
+                                <button type="submit" class="btn btn-primary btn-block">Track</button>
                             </form>
                         </div>
                     </div>

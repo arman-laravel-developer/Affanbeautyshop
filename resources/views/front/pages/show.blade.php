@@ -336,13 +336,14 @@
 
                                 <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
                                     <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px; margin-bottom: 2%;">
-                                        <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('আমি এই পণ্যটি কিনতে আগ্রহী: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
-                                       target="_blank"
-                                       class="btn-product"
-                                       style="background-color: #25D366; color: white; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
-                                        <span style="color: white;">হোয়াটসঅ্যাপে অর্ডার করুন</span>&nbsp;<i class="fab fa-whatsapp"></i> &nbsp;<span style="color: white;">{{$generalSettingView->pinterest_url}}</span>
-                                    </a>
+                                        <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('I am interested in buying this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
+                                        target="_blank"
+                                        class="btn-product"
+                                        style="background-color: #25D366; color: white; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none">
+                                            <span style="color: white;">Order on WhatsApp</span>&nbsp;<i class="fab fa-whatsapp"></i> &nbsp;<span style="color: white;">{{$generalSettingView->pinterest_url}}</span>
+                                        </a>
                                     </div>
+
                                     <form id="addToCartForm" action="{{ route('cart.add') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -357,31 +358,41 @@
                                         <div id="inStock" style="display: block;">
                                             @if($product->stock != 0)
                                                 <div class="details-action-wrapper" style="gap: 5%">
-                                                    <button type="button" id="addToCartBtn"  class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #00b7c9"><i class="fa fa-cart-plus"></i><span>কার্টে যোগ করুন</span></button>
+                                                    <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #00b7c9">
+                                                        <i class="fa fa-cart-plus"></i><span>Add to Cart</span>
+                                                    </button>
                                                     <button type="submit" id="addToBuyBtn" name="button" value="2" class="btn-product" style="height: 50px; text-decoration: none; color: white; background-color: #f89104; border: none">
-                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span></button>
+                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
+                                                    </button>
                                                 </div>
                                             @else
                                                 <div class="details-action-wrapper">
-                                                    <button type="button" disabled class="btn-product btn-danger btn-cart" style="line-height: 2 !important; min-width: auto !important;"><span>স্টক শেষ</span></button>
+                                                    <button type="button" disabled class="btn-product btn-danger btn-cart" style="line-height: 2 !important; min-width: auto !important;">
+                                                        <span>Out of Stock</span>
+                                                    </button>
                                                 </div>
                                             @endif
                                         </div>
+
                                         <div style="display: none;" id="outStock">
                                             <div class="details-action-wrapper">
-                                                <button type="button" disabled class="btn-product btn-danger btn-cart" style="line-height: 2 !important; min-width: auto !important;"><span>স্টক শেষ</span></button>
+                                                <button type="button" disabled class="btn-product btn-danger btn-cart" style="line-height: 2 !important; min-width: auto !important;">
+                                                    <span>Out of Stock</span>
+                                                </button>
                                             </div>
                                         </div>
                                     </form>
+
                                     <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px;">
                                         <a href="tel:{{$generalSettingView->mobile}}"
-                                           target="_blank"
-                                           class="btn-product"
-                                           style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
-                                            কল করুন &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>
+                                        target="_blank"
+                                        class="btn-product"
+                                        style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
+                                            Call Now &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>
                                         </a>
                                     </div>
                                 </div>
+
                             </div><!-- End .details-filter-row -->
                             <!-- End .product-details-action -->
                             <div class="product-desc-content">
@@ -389,20 +400,32 @@
                             </div>
                             <div class="product-details-footer">
                                 <div class="product-cat">
-                                    <span>ক্যাটেগরি:</span>
+                                    <span>Category:</span>
                                     @if($product->category->parentCategory)
-                                        <a href="{{route('category.product', ['id' => $product->category->parentCategory->id])}}">{{$product->category->parentCategory->category_name}}</a>,
-                                        <a href="{{route('category.product', ['id' => $product->category->id])}}">{{$product->category->category_name}}</a>
+                                        <a href="{{ route('category.product', ['id' => $product->category->parentCategory->id]) }}">
+                                            {{ $product->category->parentCategory->category_name }}
+                                        </a>,
+                                        <a href="{{ route('category.product', ['id' => $product->category->id]) }}">
+                                            {{ $product->category->category_name }}
+                                        </a>
                                     @else
-                                        <a href="{{route('category.product', ['id' => $product->category->id])}}">{{$product->category->category_name}}</a>
+                                        <a href="{{ route('category.product', ['id' => $product->category->id]) }}">
+                                            {{ $product->category->category_name }}
+                                        </a>
                                     @endif
                                 </div><!-- End .product-cat -->
 
                                 <div class="social-icons social-icons-sm">
-                                    <span class="social-label">শেয়ার করুন:</span>
-                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                                    <a href="https://twitter.com/intent/tweet?url={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}&text={{ urlencode($product->name) }}" class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                                    <a href="https://www.linkedin.com/shareArticle?url={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}" class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                                    <span class="social-label">Share:</span>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}"
+                                    class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+
+                                    <a href="https://twitter.com/intent/tweet?url={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}&text={{ urlencode($product->name) }}"
+                                    class="social-icon" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+
+                                    <a href="https://www.linkedin.com/shareArticle?url={{ route('product.show', ['id' => $product->id, 'slug' => $product->slug]) }}"
+                                    class="social-icon" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+
                                     <a href="#" class="social-icon" title="WhatsApp" onclick="openWhatsApp()" target="_blank"><i class="icon-whatsapp"></i></a>
                                 </div>
 
@@ -410,9 +433,9 @@
                                 <input type="hidden" id="convertedName" value="{{ $convertedName }}">
                                 <input type="hidden" id="productID" value="{{ $product->id }}">
 
-                                <!-- Element to display the combined name -->
-{{--                                <div id="combinedNameDisplay"></div>--}}
-{{--                                <p>Group id: {{$convertedName}}</p>--}}
+                                <!-- Optional output display (commented out) -->
+                                {{-- <div id="combinedNameDisplay"></div> --}}
+                                {{-- <p>Group ID: {{ $convertedName }}</p> --}}
                             </div><!-- End .product-details-footer -->
                         </div><!-- End .product-details -->
                     </div><!-- End .col-md-6 -->
@@ -420,7 +443,7 @@
                 </div><!-- End .row -->
             </div><!-- End .product-details-top -->
 
-            <h2 class="title text-center mb-4">রিলেটেড প্রোডাক্ট</h2><!-- End .title text-center -->
+            <h2 class="title text-center mb-4">Releted Products</h2><!-- End .title text-center -->
             <div class="products mb-3">
                 <div class="row justify-content-center">
                     @foreach($relatedProducts as $category_product)
@@ -462,7 +485,7 @@
 
                                                 <a href="{{route('product.show', ['id' => $category_product->id, 'slug' => $category_product->slug])}}"
                                                    class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
-                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Order Now</span>
                                                 </a>
                                             @else
                                                 <form id="buyNowForm{{ $category_product->id }}" action="{{ route('cart.add') }}" method="POST">
@@ -495,7 +518,7 @@
                                                        "
                                                    class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
                                                    style="height: 38px;color: white; background-color: #f89104;">
-                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Order Now</span>
                                                 </a>
                                             @endif
                                         </div>
@@ -513,7 +536,7 @@
                 </div><!-- End .row -->
             </div><!-- End .products -->
 
-            <h2 class="title text-center mb-4">আপনার পছন্দের প্রোডাক্ট</h2><!-- End .title text-center -->
+            <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
             <div class="products mb-3">
                 <div class="row justify-content-center">
                     @foreach($featuredProducts as $featuredProduct)
@@ -555,7 +578,7 @@
 
                                                 <a href="{{route('product.show', ['id' => $featuredProduct->id, 'slug' => $featuredProduct->slug])}}"
                                                    class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
-                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Order Now</span>
                                                 </a>
                                             @else
                                                 <form id="buyNowForm{{ $featuredProduct->id }}" action="{{ route('cart.add') }}" method="POST">
@@ -588,7 +611,7 @@
                                                        "
                                                    class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
                                                    style="height: 38px;color: white; background-color: #f89104;">
-                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                    <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Order Now</span>
                                                 </a>
                                             @endif
                                         </div>

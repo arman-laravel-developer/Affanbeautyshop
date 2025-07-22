@@ -158,162 +158,162 @@
 {{--                </div><!-- End .header-left -->--}}
 
                 <div class="header-right">
-                    <ul class="top-menu">
-                        <li>
-                            <a href="#">লিংকসমূহ</a>
-                            <ul>
-                                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>কল করুন: {{$generalSettingView->mobile}}</a></li>
-{{--                                <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>--}}
-                                <li><a href="{{route('about.us')}}">আমাদের সম্পর্কে</a></li>
-                                <li><a href="{{route('contact.us')}}">যোগাযোগ করুন</a></li>
-                                <li><a href="{{route('all.products')}}">পণ্যসমূহ</a></li>
-                                @if(Session::get('customer_id'))
-                                <li><a href="{{route('customer.dashboard')}}"><i class="icon-user"></i>ড্যাশবোর্ড</a></li>
-                                @else
-                                <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>লগইন</a></li>
-                                @endif
-                            </ul>
-                        </li>
-                    </ul><!-- End .top-menu -->
-                </div><!-- End .header-right -->
+    <ul class="top-menu">
+        <li>
+            <a href="#">Links</a>
+            <ul>
+                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
+                {{-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li> --}}
+                <li><a href="{{route('about.us')}}">About Us</a></li>
+                <li><a href="{{route('contact.us')}}">Contact Us</a></li>
+                <li><a href="{{route('all.products')}}">Products</a></li>
+                @if(Session::get('customer_id'))
+                    <li><a href="{{route('customer.dashboard')}}"><i class="icon-user"></i>Dashboard</a></li>
+                @else
+                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
+                @endif
+            </ul>
+        </li>
+    </ul><!-- End .top-menu -->
+</div><!-- End .header-right -->
+
             </div><!-- End .container-fluid -->
         </div><!-- End .header-top -->
 
         <div class="header-middle sticky-header">
-            <div class="container-fluid">
-                <div class="header-left">
-                    <button class="mobile-menu-toggler">
-                        <span class="sr-only">মোবাইল মেনু চালু করুন</span>
-                        <i class="icon-bars"></i>
-                    </button>
+    <div class="container-fluid">
+        <div class="header-left">
+            <button class="mobile-menu-toggler">
+                <span class="sr-only">Toggle mobile menu</span>
+                <i class="icon-bars"></i>
+            </button>
 
-                    <a href="{{route('home')}}" class="logo">
-                        <img src="{{asset($generalSettingView->header_logo)}}" alt="{{$generalSettingView->site_name}} Logo" width="161" height="25">
-                    </a>
+            <a href="{{route('home')}}" class="logo">
+                <img src="{{asset($generalSettingView->header_logo)}}" alt="{{$generalSettingView->site_name}} Logo" width="161" height="25">
+            </a>
 
+            <nav class="main-nav">
+                <ul class="menu sf-arrows">
+                    <li class="megamenu-container active">
+                        <a href="{{route('home')}}" class="">Home</a>
+                    </li>
+                    @foreach($menuCategories as $menuCategory)
+                    <li>
+                        <a href="{{route('category.product', ['id' => $menuCategory->id])}}" class="">{{$menuCategory->category_name}}</a>
+                        @if(count($menuCategory->subCategories) > 0)
+                        <div class="megamenu megamenu-sm">
+                            <div class="row no-gutters">
+                                <div class="col-md-12">
+                                    <div class="menu-col">
+                                        <ul>
+                                            @foreach($menuCategory->subCategories as $subCategory)
+                                                <li class="menu-title">
+                                                    <a href="{{route('category.product', ['id' => $subCategory->id])}}">{{$subCategory->category_name}}</a>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    </div><!-- End .menu-col -->
+                                </div><!-- End .col-md-12 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .megamenu megamenu-sm -->
+                        @endif
+                    </li>
+                    @endforeach
+                </ul><!-- End .menu -->
+            </nav><!-- End .main-nav -->
+        </div><!-- End .header-left -->
 
-                    <nav class="main-nav">
-                        <ul class="menu sf-arrows">
-                            <li class="megamenu-container active">
-                                <a href="{{route('home')}}" class="">হোম</a>
-                            </li>
-                            @foreach($menuCategories as $menuCategory)
-                            <li>
-                                <a href="{{route('category.product', ['id' => $menuCategory->id])}}" class="">{{$menuCategory->category_name}}</a>
-                                @if(count($menuCategory->subCategories) > 0)
-                                <div class="megamenu megamenu-sm">
-                                    <div class="row no-gutters">
-                                        <div class="col-md-12">
-                                            <div class="menu-col">
-                                                <ul>
-                                                    @foreach($menuCategory->subCategories as $subCategory)
-                                                        <li class="menu-title">
-                                                            <a href="{{route('category.product', ['id' => $subCategory->id])}}">{{$subCategory->category_name}}</a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
-                                            </div><!-- End .menu-col -->
-                                        </div><!-- End .col-md-8 -->
-                                    </div><!-- End .row -->
-                                </div><!-- End .megamenu megamenu-md -->
-                                @endif
-                            </li>
-                            @endforeach
-                        </ul><!-- End .menu -->
-                    </nav><!-- End .main-nav -->
-                </div><!-- End .header-left -->
+        <div class="header-right">
+            <div class="header-search header-search-extended header-search-visible">
+                <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                <form action="{{ route('product.search') }}" method="get">
+                    <div class="header-search-wrapper search-wrapper-wide">
+                        <label for="q" class="sr-only">Search</label>
+                        <input type="search" class="form-control" name="q" id="q" placeholder="Search products..." autocomplete="off" required>
+                        <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                    </div><!-- End .header-search-wrapper -->
+                    <!-- Suggestions list -->
+                    <ul id="suggestions" class="list-group" style="display: none;"></ul>
+                </form>
+            </div><!-- End .header-search -->
 
-                <div class="header-right">
-                    <div class="header-search header-search-extended header-search-visible">
-                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                        <form action="{{ route('product.search') }}" method="get">
-                            <div class="header-search-wrapper search-wrapper-wide">
-                                <label for="q" class="sr-only">অনুসন্ধান</label>
-                                <input type="search" class="form-control" name="q" id="q" placeholder="পণ্য খুঁজুন..." autocomplete="off" required>
-                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                            </div><!-- End .header-search-wrapper -->
-                            <!-- Suggestions list -->
-                            <ul id="suggestions" class="list-group" style="display: none;"></ul>
-                        </form>
-                    </div><!-- End .header-search -->
+            <style>
+                .dropdown-menu {
+                    width: 300px; /* Adjust width as needed */
+                    max-height: 400px; /* Set a fixed height */
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                }
 
-                    <style>
-                        .dropdown-menu {
-                            width: 300px; /* Adjust width as needed */
-                            max-height: 400px; /* Set a fixed height */
-                            overflow: hidden;
-                            display: flex;
-                            flex-direction: column;
-                        }
+                .dropdown-cart-products {
+                    max-height: 250px; /* Height for scrollable area */
+                    overflow-y: auto;
+                    padding: 10px;
+                }
 
-                        .dropdown-cart-products {
-                            max-height: 250px; /* Height for scrollable area */
-                            overflow-y: auto;
-                            padding: 10px;
-                        }
+                .dropdown-cart-bottom {
+                    position: sticky;
+                    bottom: 0;
+                    background: #fff;
+                    padding: 10px;
+                    border-top: 1px solid #ddd;
+                }
+            </style>
 
-                        .dropdown-cart-bottom {
-                            position: sticky;
-                            bottom: 0;
-                            background: #fff;
-                            padding: 10px;
-                            border-top: 1px solid #ddd;
-                        }
-                    </style>
+            <div class="dropdown cart-dropdown">
+                <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                    <i class="icon-shopping-cart"></i>
+                    <span class="cart-count">{{count($cartProducts)}}</span>
+                </a>
 
-                    <div class="dropdown cart-dropdown">
-                        <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                            <i class="icon-shopping-cart"></i>
-                            <span class="cart-count">{{count($cartProducts)}}</span>
-                        </a>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <div class="dropdown-cart-products">
-                                @foreach($cartProducts as $cartProduct)
-                                    @php
-                                        $product = \App\Models\Product::find($cartProduct->attributes->product_id);
-                                    @endphp
-                                    <div class="product">
-                                        <div class="product-cart-details">
-                                            <h4 class="product-title">
-                                                <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}">{{$cartProduct->name}}</a>
-                                            </h4>
-                                            <span class="cart-product-info">
-                            <span class="cart-product-qty">{{$cartProduct->quantity}}</span>
-                            x &#2547;{{number_format($cartProduct->price)}}
-                        </span>
-                                        </div>
-                                        <figure class="product-image-container">
-                                            <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}" class="product-image">
-                                                <img src="{{asset($cartProduct->attributes->thumbnail_image)}}" alt="product">
-                                            </a>
-                                        </figure>
-                                        <a href="#" class="btn-remove" title="Remove Product" data-product-id="{{$cartProduct->id}}">
-                                            <i class="icon-close"></i>
-                                        </a>
-                                    </div>
-                                @endforeach
-                            </div>
-
-                            <div class="dropdown-cart-bottom">
-                                <div class="dropdown-cart-total">
-                                    <span>মোট</span>
-                                    @php($total = Cart::getTotal())
-                                    <span class="cart-total-price">&#2547;{{number_format($total)}}</span>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <div class="dropdown-cart-products">
+                        @foreach($cartProducts as $cartProduct)
+                            @php
+                                $product = \App\Models\Product::find($cartProduct->attributes->product_id);
+                            @endphp
+                            <div class="product">
+                                <div class="product-cart-details">
+                                    <h4 class="product-title">
+                                        <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}">{{$cartProduct->name}}</a>
+                                    </h4>
+                                    <span class="cart-product-info">
+                                        <span class="cart-product-qty">{{$cartProduct->quantity}}</span>
+                                        x &#2547;{{number_format($cartProduct->price)}}
+                                    </span>
                                 </div>
-
-                                <div class="dropdown-cart-action">
-                                    <a href="{{route('cart.index')}}" class="btn btn-primary" style="margin-right: 2%">কার্ট দেখুন</a>
-                                    <a href="{{route('checkout')}}" class="btn btn-outline-primary-2">
-                                        <span>চেকআউট</span><i class="icon-long-arrow-right"></i>
+                                <figure class="product-image-container">
+                                    <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}" class="product-image">
+                                        <img src="{{asset($cartProduct->attributes->thumbnail_image)}}" alt="product">
                                     </a>
-                                </div>
+                                </figure>
+                                <a href="#" class="btn-remove" title="Remove Product" data-product-id="{{$cartProduct->id}}">
+                                    <i class="icon-close"></i>
+                                </a>
                             </div>
+                        @endforeach
+                    </div>
+
+                    <div class="dropdown-cart-bottom">
+                        <div class="dropdown-cart-total">
+                            <span>Total</span>
+                            @php($total = Cart::getTotal())
+                            <span class="cart-total-price">&#2547;{{number_format($total)}}</span>
+                        </div>
+
+                        <div class="dropdown-cart-action">
+                            <a href="{{route('cart.index')}}" class="btn btn-primary" style="margin-right: 2%">View Cart</a>
+                            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2">
+                                <span>Checkout</span><i class="icon-long-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
-                </div><!-- End .header-right -->
-            </div><!-- End .container-fluid -->
-        </div><!-- End .header-middle -->
+                </div>
+            </div>
+        </div><!-- End .header-right -->
+    </div><!-- End .container-fluid -->
+</div><!-- End .header-middle -->
     </header><!-- End .header -->
 
 
@@ -321,106 +321,106 @@
         @yield('body')
     </main><!-- End .main -->
     <footer class="footer footer-dark">
-        <div class="footer-middle">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="widget widget-about">
-                            <img src="{{asset($generalSettingView->footer_logo)}}" class="footer-logo" alt="Footer Logo" width="161" height="25">
-                            <p>{{$generalSettingView->about_us_short}}</p>
+    <div class="footer-middle">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-lg-4">
+                    <div class="widget widget-about">
+                        <img src="{{asset($generalSettingView->footer_logo)}}" class="footer-logo" alt="Footer Logo" width="161" height="25">
+                        <p>{{$generalSettingView->about_us_short}}</p>
 
-                            <div class="widget-about-info">
-                                <div class="row">
-                                    <div class="col-sm-6 col-md-4">
-                                        <span class="widget-about-title text-light">প্রশ্ন আছে? ২৪/৭ কল করুন</span>
-                                        <a href="tel:{{$generalSettingView->mobile}}" style="font-size: 85%;">{{$generalSettingView->mobile}}</a>
-                                    </div>
-                                    <div class="col-sm-6 col-md-8">
-                                        <span class="widget-about-title text-light">পেমেন্ট পদ্ধতি</span>
-                                        <figure class="footer-payments">
-                                            <img src="{{asset($generalSettingView->payment_method_image)}}" alt="Payment methods" style="width: 60%; margin-left: -5%;">
-                                        </figure>
-                                    </div>
+                        <div class="widget-about-info">
+                            <div class="row">
+                                <div class="col-sm-6 col-md-4">
+                                    <span class="widget-about-title text-light">Have questions? Call 24/7</span>
+                                    <a href="tel:{{$generalSettingView->mobile}}" style="font-size: 85%;">{{$generalSettingView->mobile}}</a>
+                                </div>
+                                <div class="col-sm-6 col-md-8">
+                                    <span class="widget-about-title text-light">Payment Methods</span>
+                                    <figure class="footer-payments">
+                                        <img src="{{asset($generalSettingView->payment_method_image)}}" alt="Payment methods" style="width: 60%; margin-left: -5%;">
+                                    </figure>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-sm-4 col-lg-2">
-                        <div class="widget">
-                            <h4 class="widget-title">প্রয়োজনীয় লিংক</h4>
-                            <ul class="widget-list">
-                                <li><a href="{{route('about.us')}}">{{$generalSettingView->site_name}} সম্পর্কে</a></li>
-                                <li><a href="#">কিভাবে কেনাকাটা করবেন</a></li>
-                                <li><a href="{{route('contact.us')}}">যোগাযোগ করুন</a></li>
-                                @if(Session::get('customer_id'))
-                                    <li><a href="{{route('customer.dashboard')}}">ড্যাশবোর্ড</a></li>
-                                @else
-                                    <li><a href="#signin-modal" data-toggle="modal">লগইন করুন</a></li>
-                                @endif
-                            </ul>
-                        </div>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="widget">
+                        <h4 class="widget-title">Useful Links</h4>
+                        <ul class="widget-list">
+                            <li><a href="{{route('about.us')}}">About {{$generalSettingView->site_name}}</a></li>
+                            <li><a href="#">How to Shop</a></li>
+                            <li><a href="{{route('contact.us')}}">Contact Us</a></li>
+                            @if(Session::get('customer_id'))
+                                <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
+                            @else
+                                <li><a href="#signin-modal" data-toggle="modal">Login</a></li>
+                            @endif
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="col-sm-4 col-lg-2">
-                        <div class="widget">
-                            <h4 class="widget-title">গ্রাহক সেবা</h4>
-                            <ul class="widget-list">
-                                <li><a href="{{route('condition.page')}}">শর্তাবলী</a></li>
-                                <li><a href="{{route('privacy.page')}}">প্রাইভেসি নীতিমালা</a></li>
-                                <li><a href="{{route('return.view')}}">রিটার্ন ও রিফান্ড নীতিমালা</a></li>
-                            </ul>
-                        </div>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="widget">
+                        <h4 class="widget-title">Customer Service</h4>
+                        <ul class="widget-list">
+                            <li><a href="{{route('condition.page')}}">Terms & Conditions</a></li>
+                            <li><a href="{{route('privacy.page')}}">Privacy Policy</a></li>
+                            <li><a href="{{route('return.view')}}">Return & Refund Policy</a></li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="col-sm-4 col-lg-2">
-                        <div class="widget">
-                            <h4 class="widget-title">আমার অ্যাকাউন্ট</h4>
-                            <ul class="widget-list">
-                                @if(Session::get('customer_id'))
-                                    <li><a href="{{route('customer.dashboard')}}">ড্যাশবোর্ড</a></li>
-                                @else
-                                    <li><a href="#signin-modal" data-toggle="modal">সাইন ইন</a></li>
-                                @endif
-                                <li><a href="{{route('cart.index')}}">কার্ট দেখুন</a></li>
-                                <li><a href="{{route('track.order')}}">অর্ডার ট্র্যাক করুন</a></li>
-                                <li><a href="{{route('contact.us')}}">সাহায্য</a></li>
-                            </ul>
-                        </div>
+                <div class="col-sm-4 col-lg-2">
+                    <div class="widget">
+                        <h4 class="widget-title">My Account</h4>
+                        <ul class="widget-list">
+                            @if(Session::get('customer_id'))
+                                <li><a href="{{route('customer.dashboard')}}">Dashboard</a></li>
+                            @else
+                                <li><a href="#signin-modal" data-toggle="modal">Sign In</a></li>
+                            @endif
+                            <li><a href="{{route('cart.index')}}">View Cart</a></li>
+                            <li><a href="{{route('track.order')}}">Track Order</a></li>
+                            <li><a href="{{route('contact.us')}}">Help</a></li>
+                        </ul>
                     </div>
+                </div>
 
-                    <div class="col-sm-6 col-lg-2">
-                        <div class="widget widget-newsletter">
-                            <h4 class="widget-title">নিউজলেটারে সাবস্ক্রাইব করুন</h4>
-                            <form action="#">
-                                <div class="input-group">
-                                    <input type="email" class="form-control" placeholder="আপনার ইমেইল লিখুন" aria-label="Email Address" required>
-                                    <div class="input-group-append">
-                                        <button class="btn btn-dark" type="submit"><i class="icon-long-arrow-right"></i></button>
-                                    </div>
+                <div class="col-sm-6 col-lg-2">
+                    <div class="widget widget-newsletter">
+                        <h4 class="widget-title">Subscribe to Newsletter</h4>
+                        <form action="#">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email" aria-label="Email Address" required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-dark" type="submit"><i class="icon-long-arrow-right"></i></button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
                     </div>
-
                 </div>
+
             </div>
         </div>
+    </div>
 
-        <div class="footer-bottom">
-            <div class="container-fluid">
-                <p class="footer-copyright">কপিরাইট © {{date('Y')}} {{$generalSettingView->site_name}}. সর্বস্বত্ব সংরক্ষিত। ডিজাইন ও ডেভেলপ করেছেন <a href="https://armanalibd.com" target="_blank"><b>Md Arman Ali</b></a></p>
+    <div class="footer-bottom">
+        <div class="container-fluid">
+            <p class="footer-copyright">Copyright © {{date('Y')}} {{$generalSettingView->site_name}}. All rights reserved. Designed and developed by <a href="https://armanalibd.com" target="_blank"><b>Md Arman Ali</b></a></p>
 
-                <div class="social-icons social-icons-color">
-                    <span class="social-label">সামাজিক মাধ্যম</span>
-                    <a href="{{$generalSettingView->facebook_url}}" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
-                    <a href="{{$generalSettingView->twitter_url}}" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
-                    <a href="{{$generalSettingView->instagram_url}}" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
-                    <a href="{{$generalSettingView->youtube_url}}" class="social-icon social-youtube" title="Youtube" target="_blank"><i class="icon-youtube"></i></a>
-                </div>
+            <div class="social-icons social-icons-color">
+                <span class="social-label">Social Media</span>
+                <a href="{{$generalSettingView->facebook_url}}" class="social-icon social-facebook" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
+                <a href="{{$generalSettingView->twitter_url}}" class="social-icon social-twitter" title="Twitter" target="_blank"><i class="icon-twitter"></i></a>
+                <a href="{{$generalSettingView->instagram_url}}" class="social-icon social-instagram" title="Instagram" target="_blank"><i class="icon-instagram"></i></a>
+                <a href="{{$generalSettingView->youtube_url}}" class="social-icon social-youtube" title="YouTube" target="_blank"><i class="icon-youtube"></i></a>
             </div>
         </div>
-    </footer><!-- End .footer -->
+    </div>
+</footer><!-- End .footer -->
 </div><!-- End .page-wrapper -->
 @if(!Route::is('product.show'))
 <div class="fixed_whats">
@@ -438,15 +438,15 @@
         <span class="mobile-menu-close"><i class="icon-close"></i></span>
 
         <form action="{{ route('product.search') }}" method="get" class="mobile-search">
-            <label for="mobile-search" class="sr-only">অনুসন্ধান করুন</label>
-            <input type="search" class="form-control" name="q" id="mobile-search" placeholder="এখানে অনুসন্ধান করুন..." required>
+            <label for="mobile-search" class="sr-only">Search</label>
+            <input type="search" class="form-control" name="q" id="mobile-search" placeholder="Search here..." required>
             <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
         </form>
 
         <nav class="mobile-nav">
             <ul class="mobile-menu">
                 <li class="active">
-                    <a href="{{route('home')}}">হোম</a>
+                    <a href="{{route('home')}}">Home</a>
                 </li>
                 @foreach($menuCategories as $menuCategory)
                 <li>
@@ -462,7 +462,7 @@
                 @endforeach
 
                 <li class="active">
-                    <a href="{{route('all.products')}}">সব পণ্য</a>
+                    <a href="{{route('all.products')}}">All Products</a>
                 </li>
             </ul>
         </nav><!-- End .mobile-nav -->
@@ -471,7 +471,7 @@
             <a href="{{$generalSettingView->facebook_url}}" class="social-icon" target="_blank" title="Facebook"><i class="icon-facebook-f"></i></a>
             <a href="{{$generalSettingView->twitter_url}}" class="social-icon" target="_blank" title="Twitter"><i class="icon-twitter"></i></a>
             <a href="{{$generalSettingView->instagram_url}}" class="social-icon" target="_blank" title="Instagram"><i class="icon-instagram"></i></a>
-            <a href="{{$generalSettingView->youtube_url}}" class="social-icon" target="_blank" title="Youtube"><i class="icon-youtube"></i></a>
+            <a href="{{$generalSettingView->youtube_url}}" class="social-icon" target="_blank" title="YouTube"><i class="icon-youtube"></i></a>
         </div><!-- End .social-icons -->
     </div><!-- End .mobile-menu-wrapper -->
 </div><!-- End .mobile-menu-container -->
@@ -494,10 +494,10 @@
                     <div class="form-tab">
                         <ul class="nav nav-pills nav-fill" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link @if(!$errors->has('email') && !$errors->has('mobile') && !$errors->has('password')) active @endif" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">লগইন করুন</a>
+                                <a class="nav-link @if(!$errors->has('email') && !$errors->has('mobile') && !$errors->has('password')) active @endif" id="signin-tab" data-toggle="tab" href="#signin" role="tab" aria-controls="signin" aria-selected="true">Sign In</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link @if($errors->has('name') || $errors->has('email') || $errors->has('mobile') || $errors->has('password')) active @endif" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">রেজিস্টার করুন</a>
+                                <a class="nav-link @if($errors->has('name') || $errors->has('email') || $errors->has('mobile') || $errors->has('password')) active @endif" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">Register</a>
                             </li>
                         </ul>
                         <div class="tab-content" id="tab-content-5">
@@ -505,27 +505,27 @@
                                 <form action="{{route('customer.login')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="singin-email">মোবাইল অথবা ইমেইল ঠিকানা *</label>
-                                        <input type="text" class="form-control" id="singin-email" name="email" required>
+                                        <label for="signin-email">Mobile or Email Address *</label>
+                                        <input type="text" class="form-control" id="signin-email" name="email" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="singin-password">পাসওয়ার্ড  *</label>
-                                        <input type="password" class="form-control" id="singin-password" name="password" required>
+                                        <label for="signin-password">Password *</label>
+                                        <input type="password" class="form-control" id="signin-password" name="password" required>
                                     </div><!-- End .form-group -->
 
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">
-                                            <span>লগইন করুন</span>
+                                            <span>Sign In</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </button>
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" id="signin-remember">
-                                            <label class="custom-control-label" for="signin-remember">মনে রাখুন</label>
+                                            <label class="custom-control-label" for="signin-remember">Remember Me</label>
                                         </div><!-- End .custom-checkbox -->
 
-                                        <a href="{{route('forget.password')}}" class="forgot-link">পাসওয়ার্ড ভুলে গেছেন?</a>
+                                        <a href="{{route('forget.password')}}" class="forgot-link">Forgot Your Password?</a>
                                     </div><!-- End .form-footer -->
                                 </form>
                             </div><!-- .End .tab-pane -->
@@ -533,7 +533,7 @@
                                 <form action="{{route('customer.store')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <div class="form-group">
-                                        <label for="register-name">নাম  *</label>
+                                        <label for="register-name">Name *</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror" id="register-name" value="{{old('name')}}" name="name" required>
                                         @error('name')
                                         <span class="invalid-feedback" role="alert">
@@ -543,7 +543,7 @@
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="register-email">আপনার ইমেইল ঠিকানা *</label>
+                                        <label for="register-email">Your Email Address *</label>
                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="register-email" value="{{old('email')}}" name="email" required>
                                         @error('email')
                                         <span class="invalid-feedback" role="alert">
@@ -553,7 +553,7 @@
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="register-mobile">মোবাইল  *</label>
+                                        <label for="register-mobile">Mobile *</label>
                                         <input type="tel" class="form-control @error('mobile') is-invalid @enderror" id="register-mobile" value="{{old('mobile')}}" name="mobile" required>
                                         @error('mobile')
                                         <span class="invalid-feedback" role="alert">
@@ -563,7 +563,7 @@
                                     </div><!-- End .form-group -->
 
                                     <div class="form-group">
-                                        <label for="register-password">পাসওয়ার্ড  *</label>
+                                        <label for="register-password">Password *</label>
                                         <input type="password" class="form-control @error('password') is-invalid @enderror" id="register-password" name="password" required>
                                         @error('password')
                                         <span class="invalid-feedback" role="alert">
@@ -574,13 +574,13 @@
 
                                     <div class="form-footer">
                                         <button type="submit" class="btn btn-outline-primary-2">
-                                            <span>সাইন আপ করুন</span>
+                                            <span>Sign Up</span>
                                             <i class="icon-long-arrow-right"></i>
                                         </button>
 
                                         <div class="custom-control custom-checkbox">
                                             <input type="checkbox" class="custom-control-input" value="1" name="policy" id="register-policy" required>
-                                            <label class="custom-control-label" for="register-policy">আমি <a href="#">প্রাইভেসি পলিসি</a> তে সম্মত আছি *</label>
+                                            <label class="custom-control-label" for="register-policy">I agree to the <a href="#">Privacy Policy</a> *</label>
                                         </div><!-- End .custom-checkbox -->
                                     </div><!-- End .form-footer -->
                                 </form>
@@ -592,6 +592,7 @@
         </div><!-- End .modal-content -->
     </div><!-- End .modal-dialog -->
 </div><!-- End .modal -->
+
 
 
 @if(!in_array(Route::currentRouteName(), ['set.password', 'checkout', 'customer.dashboard']))
@@ -611,7 +612,7 @@
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title w-100" id="cartModalLabel" style="color: #3FA33F; font-weight: 700; font-size: 20px;">
                     <i class="fas fa-shopping-cart" style="font-size: 28px;"></i><br>
-                    আইটেমটি আপনার কার্টে যোগ করা হয়েছে!
+                    Item added to your cart!
                 </h5>
                 <button type="button" style="border: none" class="btn-close" data-dismiss="modal" aria-label="Close">X</button>
             </div>
@@ -627,13 +628,12 @@
             </div>
 
             <div class="modal-footer border-0 d-flex justify-content-between pt-3">
-                <button type="button" class="btn btn-sm btn-success w-50 me-2" data-dismiss="modal" style="font-weight: 600; min-width: 50%;"> শপিং এ ফিরে যান</button>
-                <a href="{{ route('checkout') }}" class="btn btn-sm btn-danger w-50" style="font-weight: 600; min-width: 50%">এখনই কিনুন</a>
+                <button type="button" class="btn btn-sm btn-success w-50 me-2" data-dismiss="modal" style="font-weight: 600; min-width: 50%;">Continue Shopping</button>
+                <a href="{{ route('checkout') }}" class="btn btn-sm btn-danger w-50" style="font-weight: 600; min-width: 50%">Buy Now</a>
             </div>
         </div>
     </div>
 </div>
-
 
 
 {{--<div class="container newsletter-popup-container mfp-hide" id="newsletter-popup-form">--}}

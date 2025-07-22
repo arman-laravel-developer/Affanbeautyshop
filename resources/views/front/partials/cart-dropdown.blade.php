@@ -33,14 +33,14 @@
         </div><!-- End .cart-product -->
 
         <div class="dropdown-cart-total">
-            <span>মোট</span>
+            <span>Total</span>
             @php($total = Cart::getTotal())
             <span class="cart-total-price">&#2547;{{number_format($total)}}</span>
         </div><!-- End .dropdown-cart-total -->
 
         <div class="dropdown-cart-action">
-            <a href="{{route('cart.index')}}" class="btn btn-primary">কার্ট দেখুন</a>
-            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2"><span>চেকআউট</span><i class="icon-long-arrow-right"></i></a>
+            <a href="{{route('cart.index')}}" class="btn btn-primary">View Cart</a>
+            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
         </div><!-- End .dropdown-cart-total -->
     </div><!-- End .dropdown-menu -->
 </div><!-- End .cart-dropdown -->
