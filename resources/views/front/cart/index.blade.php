@@ -1,21 +1,21 @@
 @extends('front.master')
 
 @section('title')
-{{$generalSettingView->site_name}} - শপিং কার্ট
+{{$generalSettingView->site_name}} - Shopping Cart
 @endsection
 
 @section('body')
     <div class="page-header text-center" style="background-image: url('{{asset('/')}}front/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title">শপিং কার্ট<span>শপ</span></h1>
+            <h1 class="page-title">Shopping Cart<span>Shop</span></h1>
         </div><!-- End .container -->
     </div><!-- End .page-header -->
 
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
-                <li class="breadcrumb-item active" aria-current="page">শপিং কার্ট</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Shopping Cart</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -48,13 +48,13 @@
                             <table class="table table-cart table-mobile">
                                 <thead>
                                 <tr>
-                                    <th>পণ্য</th>
-                                    <th>মূল্য</th>
+                                    <th>Products</th>
+                                    <th>Price</th>
                                     @if($hasSizes)
-                                        <th>সাইজ</th>
+                                        <th>Size</th>
                                     @endif
-                                    <th>পরিমাণ</th>
-                                    <th>মোট</th>
+                                    <th>QTY</th>
+                                    <th>Total</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -92,7 +92,7 @@
                                                         <select name="size_id" class="form-control size-select"
                                                                 onchange="this.form.submit()"
                                                                 @if($cartProduct->attributes->size == null) disabled @endif>
-                                                            <option value="" selected disabled>সাইজ সিলেক্ট করুন</option>
+                                                            <option value="" selected disabled>Select Size</option>
                                                         @foreach($product->variants as $variant)
                                                             @if($variant->size) <!-- Check if size exists -->
                                                                 <option value="{{$variant->size_id}}" {{$variant->size_id == $cartProduct->attributes->size ? 'selected' : ''}}>
@@ -121,7 +121,7 @@
                                                         <select name="color_id" class="form-control size-select"
                                                                 onchange="this.form.submit()"
                                                                 @if($cartProduct->attributes->color == null) disabled @endif>
-                                                            <option value="" selected disabled>কালার সিলেক্ট করুন</option>
+                                                            <option value="" selected disabled>Select Color</option>
                                                         @foreach($product->variants as $variant)
                                                             @if($variant->color) <!-- Check if color exists -->
                                                                 <option value="{{$variant->color_id}}" {{$variant->color_id == $cartProduct->attributes->color ? 'selected' : ''}}>
@@ -164,19 +164,19 @@
                         @else
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h4 class="text-center text-danger">আপনার কার্টে কোনো পণ্য নেই!</h4>
+                                    <h4 class="text-center text-danger">Your cart is empty!</h4>
                                 </div>
                             </div>
                         @endif
                     </div><!-- End .col-lg-9 -->
                     <aside class="col-lg-3">
                         <div class="summary summary-cart">
-                            <h3 class="summary-title">কার্ট মোট</h3>
+                            <h3 class="summary-title">Cart Total</h3>
 
                             <table class="table table-summary">
                                 <tbody>
                                 <tr class="summary-subtotal">
-                                    <td>সাবটোটাল:</td>
+                                    <td>Subtotal:</td>
                                     <td>&#2547;{{ number_format(\Cart::getTotal(), 2) }}</td>
                                 </tr>
 {{--                                <tr class="summary-shipping">--}}
@@ -205,16 +205,16 @@
 {{--                                </tr>--}}
 
                                 <tr class="summary-total">
-                                    <td>মোট:</td>
+                                    <td>Total:</td>
                                     <td id="total-amount">&#2547;{{ number_format(\Cart::getTotal(), 2) }}</td>
                                 </tr>
                                 </tbody>
                             </table>
 
-                            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">চেকআউটে যান</a>
+                            <a href="{{route('checkout')}}" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO CHECKOUT</a>
                         </div>
 
-                        <a href="{{route('all.products')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>কেনাকাটা চালিয়ে যান</span><i class="icon-refresh"></i></a>
+                        <a href="{{route('all.products')}}" class="btn btn-outline-dark-2 btn-block mb-3"><span>CONTINUE SHOPPING</span><i class="icon-refresh"></i></a>
                     </aside>
                 </div><!-- End .row -->
             </div><!-- End .container -->

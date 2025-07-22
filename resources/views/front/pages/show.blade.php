@@ -107,7 +107,7 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
         <div class="container d-flex align-items-center">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 <li class="breadcrumb-item"><a href="{{route('category.product', ['id' => $product->category_id])}}">{{$product->category->category_name}}</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
             </ol>
@@ -259,7 +259,7 @@
                             @if($product->is_variant == 1)
                                 @if($product->variants->where('color_id', '!=', null)->unique('color_id')->count() > 0)
                                     <div class="details-filter-row details-row-size" style="margin-bottom: 1%!important;">
-                                        <label>কালার সিলেক্ট করুন:</label>
+                                        <label>Select Color:</label>
                                         <div class="product-nav product-nav-thumbs">
                                             @foreach($product->variants->where('color_id', '!=', null)->unique('color_id') as $variant)
                                                 <a class="zoom-image btn-color {{ $loop->first ? '' : '' }}"
@@ -280,13 +280,13 @@
                                     </div><!-- End .details-filter-row -->
                                     <div class="details-filter-row details-row-size" style="margin-bottom: 0 !important;">
                                         <label></label>
-                                        <div id="colorError" class="error-message" style="color: red; display: none;">দয়া করে কালার সিলেক্ট করুন.<i class="fa fa-arrow-up"></i> </div>
+                                        <div id="colorError" class="error-message" style="color: red; display: none;">Please select a color.<i class="fa fa-arrow-up"></i> </div>
                                     </div>
                                 @endif
 
                                 @if($product->variants->where('size_id', '!=', null)->unique('size_id')->count() > 0)
                                 <div class="details-filter-row details-row-size" style="margin-bottom: 0 !important;">
-                                    <label>সাইজ সিলেক্ট করুন:</label>
+                                    <label>Select Size:</label>
                                     <div class="size-buttons">
                                         @foreach($product->variants->where('size_id', '!=', null)->unique('size_id') as $variant)
                                             <button
@@ -305,7 +305,7 @@
                                 </div>
                                 <div class="details-filter-row details-row-size">
                                     <label></label>
-                                    <div id="sizeError" class="error-message" style="color: red; display: none;">দয়া করে সাইজ সিলেক্ট করুন.<i class="fa fa-arrow-up"></i> </div>
+                                    <div id="sizeError" class="error-message" style="color: red; display: none;">Please select a size.<i class="fa fa-arrow-up"></i> </div>
                                 </div>
                                 @endif
                             @else
@@ -313,7 +313,7 @@
                             @endif
 
                             <div class="details-filter-row details-row-size">
-                                <label for="qty">পরিমাণ:</label>
+                                <label for="qty">QTY:</label>
                                 <div class="product-details-quantity">
                                     <input type="number"
                                            id="qty"
@@ -330,24 +330,19 @@
                                 <!-- Message & WhatsApp button after Qty -->
                                 <div style="margin-top: 10px; background-color: #e6f7ff; border-left: 5px solid #00b7c9; padding: 10px; border-radius: 5px;">
                                     <p style="margin: 0; font-family: 'Hind Siliguri', sans-serif; font-weight: 700; font-style: normal; color: #333;font-size: 1.7rem;">
-                                        🔰 কোন প্রকার অগ্রিম পেমেন্ট ছাড়া অর্ডার কনফার্ম করুন
-                                    </p>
-                                    <p style="margin: 0; font-family: 'Hind Siliguri', sans-serif; font-weight: 700; font-style: normal; color: #333;font-size: 1.7rem;">
-                                        🔰 কোয়ালিটি যাচাই করে পণ্য গ্রহণ করতে পারবেন
+                                        🔰 Confirm your order without any advance payment.
                                     </p>
                                 </div>
 
-                                <!-- WhatsApp Contact Button -->
-                                <div class="mt-2 mb-3" style="margin-top: 10px;">
-                                    <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('আমি এই পণ্যটি কিনতে আগ্রহী: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
+                                <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
+                                    <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px;">
+                                        <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('আমি এই পণ্যটি কিনতে আগ্রহী: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
                                        target="_blank"
                                        class="btn-product"
                                        style="background-color: #25D366; color: white; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
                                         <span style="color: white;">হোয়াটসঅ্যাপে অর্ডার করুন</span>&nbsp;<i class="fab fa-whatsapp"></i> &nbsp;<span style="color: white;">{{$generalSettingView->pinterest_url}}</span>
                                     </a>
-                                </div>
-
-                                <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
+                                    </div>
                                     <form id="addToCartForm" action="{{ route('cart.add') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">

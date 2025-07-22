@@ -1,7 +1,7 @@
 @extends('front.master')
 
 @section('title')
-{{$generalSettingView->site_name}} - চেকআউট
+{{$generalSettingView->site_name}} - Checkout
 @endsection
 
 @section('body')
@@ -13,9 +13,9 @@
 <nav aria-label="breadcrumb" class="breadcrumb-nav bg-gray">
     <div class="container">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
-            <li class="breadcrumb-item"><a href="#">শপ</a></li>
-            <li class="breadcrumb-item active" aria-current="page">চেকআউট</li>
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Checkout</li>
         </ol>
     </div><!-- End .container -->
 </nav><!-- End .breadcrumb-nav -->
@@ -95,7 +95,7 @@
                     <!-- Form Section -->
                     <div class="col-md-6">
                         <div class="form-section">
-                            <h2>অর্ডার করতে নিচের ফর্মটি পূরণ করুন</h2>
+                            <h2>Fill out the form below to order</h2>
                             <form id="orderForm" action="{{route('order.store-button')}}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @php
@@ -103,26 +103,26 @@
                                 @endphp
                                 <div class="form-group position-relative mb-3">
                                     <i class="fa fa-user"></i>
-                                    <input type="text" class="form-control" name="name" value="{{$order->name ?? ''}}" placeholder="আপনার নাম লিখুন*" required>
+                                    <input type="text" class="form-control" name="name" value="{{$order->name ?? ''}}" placeholder="Enter Your Name*" required>
                                 </div>
                                 <div class="form-group position-relative mb-3">
                                     <i class="fa fa-phone"></i>
                                     <input type="text" class="form-control" name="mobile" value="{{$order->mobile ?? ''}}"
                                            oninput="this.value = convertBanglaToArabic(this.value).replace(/[^0-9]/g, '');"
-                                           placeholder="আপনার মোবাইল নাম্বার লিখুন*" required>
+                                           placeholder="Enter Your Mobile Number*" required>
                                 </div>
                                 <div class="form-group position-relative mb-3">
                                     <i class="fa fa-map-marker-alt"></i>
-                                    <input type="text" class="form-control" name="address" value="{{$order->address ?? ''}}" placeholder="আপনার ঠিকানা লিখুন (মহল্লা+থানা+জেলা)*" required>
+                                    <input type="text" class="form-control" name="address" value="{{$order->address ?? ''}}" placeholder="Enter Your Address (Thana + Zilla)*" required>
                                 </div>
                                 <div class="form-group position-relative mb-3">
                                     <i class="fa fa-comments"></i>
-                                    <input type="text" class="form-control" name="order_note" value="{{$order->order_note ?? ''}}" placeholder="এইখানে নোট লিখুন। (অপশনাল)">
+                                    <input type="text" class="form-control" name="order_note" value="{{$order->order_note ?? ''}}" placeholder="Notes about your order, e.g. special notes for delivery. (optional)">
                                 </div>
                                 <input type="hidden" name="payment_method" value="3">
                                 @if(!$isFreeShipping)
                                 <!-- Shipping Area Selection -->
-                                    <h3 class="h6 mt-4">ডেলিভারি এলাকা নির্বাচন করুন</h3>
+                                    <h3 class="h6 mt-4">Select Delivery Area</h3>
                                     <div class="radio-group mb-4">
                                         @foreach($shippingCosts as $shippingCost)
                                             <div class="total">
@@ -139,7 +139,7 @@
                                     <input type="hidden" name="shipping_cost" value="0">
                                 @endif
 {{--                                <div id="responseMessage" style="display: none; color: green; margin-top: 10px;"></div>--}}
-                                <button type="submit" class="btn btn-success w-100">অর্ডার কনফার্ম করুন</button>
+                                <button type="submit" class="btn btn-success w-100">Place Order</button>
                             </form>
                         </div>
                     </div>
@@ -186,7 +186,7 @@
                     <!-- Order Summary Section -->
                     <div class="col-md-6">
                         <div class="order-summary">
-                            <h2>আপনার অর্ডার সামারি</h2>
+                            <h2>Your Order</h2>
                             @foreach($cartProducts as $cartProduct)
                                 @php
                                     // Fetch variants based on size and color attributes
@@ -222,13 +222,13 @@
                                 </div>
                             @endforeach
                             <div class="total mt-3">
-                                <p>মোট: <span id="cart-subtotal">&#2547;{{ number_format(\Cart::getTotal(), 2) }}</span></p>
+                                <p>Sub-Total: <span id="cart-subtotal">&#2547;{{ number_format(\Cart::getTotal(), 2) }}</span></p>
                                 @if(!$isFreeShipping)
-                                    <p>শিপিং খরচ: <span id="shipping-cost">&#2547;0</span></p>
+                                    <p>Shipping Cost: <span id="shipping-cost">&#2547;0</span></p>
                                 @else
-                                    <p>শিপিং খরচ: <img src="{{ asset('/free-shipping.png') }}" alt="Free Shipping" style="width: 9%; justify-content: flex-end; display: block; margin-left: auto;"></p>
+                                    <p>Shipping Cost: <img src="{{ asset('/free-shipping.png') }}" alt="Free Shipping" style="width: 9%; justify-content: flex-end; display: block; margin-left: auto;"></p>
                                 @endif
-                                <p>সর্বমোট: <span id="cart-total"><strong>&#2547;{{ number_format(\Cart::getTotal(), 2) }}</strong></span></p>
+                                <p>Total: <span id="cart-total"><strong>&#2547;{{ number_format(\Cart::getTotal(), 2) }}</strong></span></p>
                             </div>
                         </div>
                     </div>

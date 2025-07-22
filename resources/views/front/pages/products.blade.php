@@ -1,20 +1,20 @@
 @extends('front.master')
 
 @section('title')
-{{$generalSettingView->site_name}} - সকল প্রোডাক্ট
+{{$generalSettingView->site_name}} - All Products
 @endsection
 
 @section('body')
     <div class="page-header text-center" style="background-image: url('{{asset('/')}}front/assets/images/page-header-bg.jpg')">
         <div class="container">
-            <h1 class="page-title">সকল প্রোডাক্ট</h1>
+            <h1 class="page-title">All Products</h1>
         </div><!-- End .container -->
     </div><!-- End .page-header -->
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
-                <li class="breadcrumb-item active" aria-current="page">সকল প্রোডাক্ট</li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All Products</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -26,18 +26,18 @@
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
-                                মোট <span>{{ $products->total() }}</span> পণ্যের মধ্যে
-                                <span>{{ $products->firstItem() }} - {{ $products->lastItem() }}</span> টি দেখানো হচ্ছে
+                                Showing <span>{{ $category_products->firstItem() }} - {{ $category_products->lastItem() }}</span> of
+                                  <span>{{ $category_products->total() }}</span> Products
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
 
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
-                                <label for="sortby">ফিল্টার করুন:</label>
+                                <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control">
-                                        <option value="popularity">সবচেয়ে জনপ্রিয়</option>
-                                        <option value="date" selected="selected">তারিখ অনুযায়ী</option>
+                                        <option value="popularity">Most Popular</option>
+                                        <option value="date" selected="selected">Date</option>
                                     </select>
                                 </div>
                             </div><!-- End .toolbox-sort -->
@@ -198,13 +198,13 @@
                             @if ($products->onFirstPage())
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>পিছনে
+                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
                                     </a>
                                 </li>
                             @else
                                 <li class="page-item">
                                     <a class="page-link page-link-prev" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>পিছনে
+                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
                                     </a>
                                 </li>
                             @endif
@@ -225,13 +225,13 @@
                             @if ($products->hasMorePages())
                                 <li class="page-item">
                                     <a class="page-link page-link-next" href="{{ $products->nextPageUrl() }}" aria-label="Next">
-                                        সামনে <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
                                     </a>
                                 </li>
                             @else
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-next" href="#" aria-label="Next" tabindex="-1" aria-disabled="true">
-                                        সামনে <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
                                     </a>
                                 </li>
                             @endif
@@ -241,14 +241,14 @@
                 <aside class="col-lg-3 order-lg-first">
                     <div class="sidebar sidebar-shop">
                         <div class="widget widget-clean">
-                            <label>ফিল্টার করুন:</label>
-                            <a href="#" class="sidebar-filter-clear">ক্লিয়ার করুন</a>
+                            <label>Filters:</label>
+                            <a href="#" class="sidebar-filter-clear">Clear All</a>
                         </div><!-- End .widget widget-clean -->
 
                         <div class="widget widget-collapsible">
                             <h3 class="widget-title">
                                 <a data-toggle="collapse" href="#widget-1" role="button" aria-expanded="true" aria-controls="widget-1">
-                                    ক্যাটেগরি অনুযায়ী
+                                    Category
                                 </a>
                             </h3><!-- End .widget-title -->
 
@@ -278,7 +278,7 @@
                         <div class="widget widget-collapsible">
                             <h3 class="widget-title">
                                 <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
-                                    সাইজ অনুযায়ী
+                                    Size
                                 </a>
                             </h3><!-- End .widget-title -->
 
@@ -302,7 +302,7 @@
                         <div class="widget widget-collapsible">
                             <h3 class="widget-title">
                                 <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
-                                    ব্র্যান্ড অনুযায়ী
+                                   Brand
                                 </a>
                             </h3><!-- End .widget-title -->
 

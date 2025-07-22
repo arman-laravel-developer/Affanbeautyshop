@@ -177,7 +177,7 @@
     <div class="bg-light-2 pt-6 pb-3 featured">
         <div class="container-fluid">
             <div class="heading heading-center mb-3">
-                <h2 class="title">ফিচার প্রোডাক্ট</h2><!-- End .title -->
+                <h2 class="title">FEATURED PRODUCTS</h2><!-- End .title -->
             </div><!-- End .heading -->
             <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow" data-toggle="owl"
                  data-owl-options='{
@@ -393,7 +393,7 @@
 
             <div class="text-center mt-2">
                 <a href="{{ route('category.product', ['id' => $categoryWiseHomeView->id ]) }}" style="font-size: 2rem">
-                    <span>আরো প্রোডাক্ট দেখুন</span>
+                    <span>More Products</span>
                     <i class="icon-long-arrow-right"></i>
                 </a>
             </div><!-- End .more-container -->

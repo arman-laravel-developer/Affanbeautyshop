@@ -13,7 +13,7 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('home')}}">হোম</a></li>
+                <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                 @if($category->parentCategory)
                 <li class="breadcrumb-item">
                     <a href="{{route('category.product', ['id' => $category->parentCategory->id])}}">{{$category->parentCategory->category_name}}</a>
@@ -33,18 +33,18 @@
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
-                                মোট <span>{{ $category_products->total() }}</span> পণ্যের মধ্যে
-                                <span>{{ $category_products->firstItem() }} - {{ $category_products->lastItem() }}</span> টি দেখানো হচ্ছে
+                                Showing <span>{{ $category_products->firstItem() }} - {{ $category_products->lastItem() }}</span> of
+                                  <span>{{ $category_products->total() }}</span> Products
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
 
                         <div class="toolbox-right">
                             <div class="toolbox-sort">
-                                <label for="sortby">ফিল্টার করুন:</label>
+                                <label for="sortby">Sort by:</label>
                                 <div class="select-custom">
                                     <select name="sortby" id="sortby" class="form-control">
-                                        <option value="popularity">সবচেয়ে জনপ্রিয়</option>
-                                        <option value="date" selected="selected">তারিখ অনুযায়ী</option>
+                                        <option value="popularity">Most Popular</option>
+                                        <option value="date" selected="selected">Date</option>
                                     </select>
                                 </div>
                             </div><!-- End .toolbox-sort -->
@@ -62,7 +62,7 @@
                                         @endphp
 
                                         @if($isNew)
-                                            <span class="product-label label-new">নতুন</span>
+                                            <span class="product-label label-new">New</span>
                                         @endif
 
                                         <a href="{{route('product.show', ['id' => $category_product->id, 'slug' => $category_product->slug])}}">
@@ -161,13 +161,13 @@
                             @if ($category_products->onFirstPage())
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-prev" href="#" aria-label="Previous" tabindex="-1" aria-disabled="true">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>পিছনে
+                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
                                     </a>
                                 </li>
                             @else
                                 <li class="page-item">
                                     <a class="page-link page-link-prev" href="{{ $category_products->previousPageUrl() }}" aria-label="Previous">
-                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>পিছনে
+                                        <span aria-hidden="true"><i class="icon-long-arrow-left"></i></span>Prev
                                     </a>
                                 </li>
                             @endif
@@ -188,13 +188,13 @@
                             @if ($category_products->hasMorePages())
                                 <li class="page-item">
                                     <a class="page-link page-link-next" href="{{ $category_products->nextPageUrl() }}" aria-label="Next">
-                                        সামনে <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
                                     </a>
                                 </li>
                             @else
                                 <li class="page-item disabled">
                                     <a class="page-link page-link-next" href="#" aria-label="Next" tabindex="-1" aria-disabled="true">
-                                        সামনে <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
+                                        Next <span aria-hidden="true"><i class="icon-long-arrow-right"></i></span>
                                     </a>
                                 </li>
                             @endif
@@ -204,8 +204,8 @@
                 <aside class="col-lg-3 order-lg-first">
                     <div class="sidebar sidebar-shop">
                         <div class="widget widget-clean">
-                            <label>ফিল্টার করুন:</label>
-                            <a href="#" class="sidebar-filter-clear">ক্লিয়ার করুন</a>
+                            <label>Fillters:</label>
+                            <a href="#" class="sidebar-filter-clear">Clear All</a>
                         </div><!-- End .widget widget-clean -->
 
                         @if(count($category->subCategories) > 0)
@@ -237,7 +237,7 @@
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
                                     <a data-toggle="collapse" href="#widget-2" role="button" aria-expanded="true" aria-controls="widget-2">
-                                        সাইজ অনুযায়ী
+                                       Size
                                     </a>
                                 </h3><!-- End .widget-title -->
 
@@ -260,7 +260,7 @@
                             <div class="widget widget-collapsible">
                                 <h3 class="widget-title">
                                     <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
-                                        ব্র্যান্ড অনুযায়ী
+                                       Brand
                                     </a>
                                 </h3><!-- End .widget-title -->
 
