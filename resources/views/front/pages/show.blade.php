@@ -335,7 +335,7 @@
                                 </div>
 
                                 <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
-                                    <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px;">
+                                    <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px; margin-bottom: 2%;">
                                         <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('আমি এই পণ্যটি কিনতে আগ্রহী: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
                                        target="_blank"
                                        class="btn-product"
