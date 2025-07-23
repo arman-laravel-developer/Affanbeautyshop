@@ -269,6 +269,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr/>
+                            <div class="card-body" style="margin-top: -2%">
+                                <div class="row">
+                                    <label class="col-md-3 col-form-label">Ingredients</label>
+                                    <div class="col-md-9">
+                                        <textarea type="text" name="ingredients" id="summernote1" class="form-control @error('ingredients') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter ingredients" required></textarea>
+                                        @error('ingredients')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="card-body" style="margin-top: -2%">
+                                <div class="row">
+                                    <label class="col-md-3 col-form-label">How to use</label>
+                                    <div class="col-md-9">
+                                        <textarea type="text" name="how_to_use" id="summernote2" class="form-control @error('how_to_use') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter how to use" required></textarea>
+                                        @error('how_to_use')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 {{--                        <div class="card">--}}
 {{--                            <div class="card-header" style="margin-bottom: -4%;">--}}
@@ -408,6 +432,14 @@
             height: 200
         });
         $('#shot_summernote').summernote({
+            tabsize: 2,
+            height: 200
+        });
+        $('#summernote1').summernote({
+            tabsize: 2,
+            height: 200
+        });
+        $('#summernote2').summernote({
             tabsize: 2,
             height: 200
         });
