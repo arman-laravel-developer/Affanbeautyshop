@@ -122,6 +122,8 @@ class ProductController extends Controller
         $product->brand_id = $request->brand_id;
         $product->unit = $request->unit;
         $product->description = $request->description;
+        $product->ingredients = $request->ingredients;
+        $product->how_to_use = $request->how_to_use;
         $product->short_description = $request->short_description;
         $product->stock = $request->stock;
         $product->cost_price = $request->cost_price;
@@ -364,6 +366,8 @@ class ProductController extends Controller
         $product->brand_id = $request->brand_id;
         $product->unit = $request->unit;
         $product->description = $request->description;
+        $product->ingredients = $request->ingredients;
+        $product->how_to_use = $request->how_to_use;
         $product->short_description = $request->short_description;
         $product->stock = $request->stock;
         $product->cost_price = $request->cost_price;
