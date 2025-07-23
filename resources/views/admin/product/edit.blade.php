@@ -480,6 +480,14 @@
             tabsize: 2,
             height: 200
         });
+        $('#summernote1').summernote({
+            tabsize: 2,
+            height: 200
+        });
+        $('#summernote2').summernote({
+            tabsize: 2,
+            height: 200
+        });
     </script>
     <!-- end row -->
     <script>
