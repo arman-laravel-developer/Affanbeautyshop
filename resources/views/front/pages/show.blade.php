@@ -137,7 +137,7 @@
                 <div class="row">
                     <!-- Mobile Version -->
                     <div class="col-md-6 mobile-view">
-                        <div class="product-gallery">
+                        <div class="product-gallery product-gallery-vertical">
                             <figure class="product-main-image">
                                 <img src="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}" alt="product image">
 
@@ -204,7 +204,7 @@
 
                     <!-- Desktop Version -->
                     <div class="col-md-6 desktop-view">
-                        <div class="product-gallery">
+                        <div class="product-gallery product-gallery-vertical">
                             <figure class="product-main-image">
                                 <img id="product-zoom" src="{{ asset($product->thumbnail_img) }}" data-zoom-image="{{ asset($product->thumbnail_img) }}" alt="product image">
 
