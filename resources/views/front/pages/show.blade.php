@@ -335,12 +335,12 @@
                                 </div>
 
                                 <!-- WhatsApp Contact Button -->
-                                <div class="text-center my-3">
-                                    <a href="https://wa.me/{{ $generalSettingView->pinterest_url }}?text={{ urlencode('I am interested in this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
+                                <div class="mt-2 mb-3 text-center" style="margin-top: 10px; width: 100%">
+                                    <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('i am interested this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
                                        target="_blank"
-                                       class="btn-product d-inline-block"
-                                       style="background-color: #25D366; color: white; line-height: 2; padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none;">
-                                        <i class="fab fa-whatsapp"></i> Order on WhatsApp &nbsp;<span>{{ $generalSettingView->pinterest_url }}</span>
+                                       class="btn-product"
+                                       style="background-color: #25D366; color: white; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
+                                        <span style="color: white;">Order on WhatsApp</span>&nbsp;<i class="fab fa-whatsapp"></i> &nbsp;<span style="color: white;">{{$generalSettingView->pinterest_url}}</span>
                                     </a>
                                 </div>
 
