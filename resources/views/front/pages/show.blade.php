@@ -334,6 +334,16 @@
                                     </p>
                                 </div>
 
+                                <!-- WhatsApp Contact Button -->
+                                <div class="text-center my-3">
+                                    <a href="https://wa.me/{{ $generalSettingView->pinterest_url }}?text={{ urlencode('I am interested in this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
+                                       target="_blank"
+                                       class="btn-product d-inline-block"
+                                       style="background-color: #25D366; color: white; line-height: 2; padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none;">
+                                        <i class="fab fa-whatsapp"></i> Order on WhatsApp &nbsp;<span>{{ $generalSettingView->pinterest_url }}</span>
+                                    </a>
+                                </div>
+
                                 <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
                                     <form id="addToCartForm" action="{{ route('cart.add') }}" method="POST">
                                         @csrf
