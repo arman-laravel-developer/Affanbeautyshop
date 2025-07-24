@@ -367,7 +367,7 @@
 
                                         <div id="inStock" style="display: block;">
                                             @if($product->stock != 0)
-                                                <div class="details-action-wrapper" style="gap: 5%">
+                                                <div class="details-action-wrapper" style="gap: 5%; margin-top: 0!important;">
                                                     <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #00b7c9">
                                                         <i class="fa fa-cart-plus"></i><span>Add to Cart</span>
                                                     </button>
