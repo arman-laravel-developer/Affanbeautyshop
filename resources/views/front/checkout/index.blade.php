@@ -257,25 +257,27 @@
         const shippingCostElement = document.querySelector('.total p:nth-child(2) span');
         const totalElement = document.querySelector('.total p:nth-child(3) span');
 
-        // Function to update the shipping cost and total
-        const updateSummary = (shippingCost) => {
-            const subTotal = parseFloat({{ \Cart::getTotal() }}); // Get subtotal from server
-            const updatedTotal = subTotal + parseFloat(shippingCost || 0);
+        const subTotal = parseFloat({{ \Cart::getTotal() }}); // Server-side subtotal
 
-            // Update the shipping cost and total in the order summary
+        // Show initial values (no shipping cost)
+        shippingCostElement.innerHTML = `&#2547;0.00`;
+        totalElement.innerHTML = `<strong>&#2547;${subTotal.toFixed(2)}</strong>`;
+
+        const updateSummary = (shippingCost) => {
+            const updatedTotal = subTotal + parseFloat(shippingCost || 0);
             shippingCostElement.innerHTML = `&#2547;${parseFloat(shippingCost || 0).toFixed(2)}`;
             totalElement.innerHTML = `<strong>&#2547;${updatedTotal.toFixed(2)}</strong>`;
         };
 
-        // Add event listener to all shipping cost radio inputs
+        // Only update total when a shipping option is selected
         shippingInputs.forEach(input => {
             input.addEventListener('change', (event) => {
-                const shippingCost = event.target.value;
-                updateSummary(shippingCost);
+                updateSummary(event.target.value);
             });
         });
     });
 </script>
+
 
 
 <script type="text/javascript">
