@@ -335,6 +335,15 @@
                                 </div>
 
                                 <!-- WhatsApp Contact Button -->
+                                 
+                                <div class="mt-2 mb-3 text-center" style="margin-top: 10px; width: 100%">
+                                    <a href="tel:{{$generalSettingView->mobile}}"
+                                        target="_blank"
+                                        class="btn-product"
+                                        style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
+                                            Call Now &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>
+                                        </a>
+                                </div>
                                 <div class="mt-2 mb-3 text-center" style="margin-top: 10px; width: 100%">
                                     <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('i am interested this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
                                        target="_blank"
@@ -383,15 +392,6 @@
                                             </div>
                                         </div>
                                     </form>
-
-                                    <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px;">
-                                        <a href="tel:{{$generalSettingView->mobile}}"
-                                        target="_blank"
-                                        class="btn-product"
-                                        style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
-                                            Call Now &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>
-                                        </a>
-                                    </div>
                                 </div>
 
                             </div><!-- End .details-filter-row -->
@@ -441,13 +441,13 @@
                                     <div class="tab-scroll-wrapper">
                                         <ul class="nav nav-pills justify-content-start px-3" role="tablist">
                                             <li class="nav-item">
-                                                <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                                                <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true"><b>Description</b></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Ingredients</a>
+                                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false"><b>Ingredients</b></a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">How To Use</a>
+                                                <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false"><b>How To Use</b></a>
                                             </li>
                                         </ul>
                                     </div>
