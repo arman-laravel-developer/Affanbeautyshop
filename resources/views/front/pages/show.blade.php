@@ -335,15 +335,6 @@
                                 </div>
 
                                 <div class="product-details-action mobile-sticky-footer" style="margin-bottom: 0 !important; display: block">
-                                    <div class="details-action-wrapper d-flex justify-content-end" style="margin-top: 10px; margin-bottom: 2%;">
-                                        <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('I am interested in buying this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
-                                        target="_blank"
-                                        class="btn-product"
-                                        style="background-color: #25D366; color: white; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem; text-decoration: none">
-                                            <span style="color: white;">Order on WhatsApp</span>&nbsp;<i class="fab fa-whatsapp"></i> &nbsp;<span style="color: white;">{{$generalSettingView->pinterest_url}}</span>
-                                        </a>
-                                    </div>
-
                                     <form id="addToCartForm" action="{{ route('cart.add') }}" method="POST">
                                         @csrf
                                         <input type="hidden" name="product_id" value="{{ $product->id }}">
@@ -395,38 +386,83 @@
 
                             </div><!-- End .details-filter-row -->
                             <!-- End .product-details-action -->
+                            <!-- Add this inside your Blade or HTML file -->
+
+                            <style>
+                                .tab-scroll-wrapper {
+                                    overflow-x: auto;
+                                    -ms-overflow-style: none; /* IE and Edge */
+                                    scrollbar-width: none;    /* Firefox */
+                                }
+
+                                .tab-scroll-wrapper::-webkit-scrollbar {
+                                    display: none; /* Chrome, Safari */
+                                }
+
+                                .nav-pills {
+                                    white-space: nowrap;
+                                    flex-wrap: nowrap;
+                                }
+
+                                .nav-item {
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                }
+
+                                .nav-link {
+                                    border-radius: 0;
+                                    border-bottom: 2px solid transparent;
+                                    color: #333;
+                                }
+
+                                .nav-link.active {
+                                    border-bottom: 2px solid #2ECC71; /* Or your primary color */
+                                    color: #2ECC71;
+                                }
+
+                                .product-desc-content p {
+                                    margin-bottom: 1rem;
+                                }
+                            </style>
+
                             <div class="product-desc-content">
                                 <div class="product-details-tab">
-                        <ul class="nav nav-pills justify-content-center" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Ingredients</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">How To Use</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
-                                <div class="product-desc-content">
-                                    <p>{!! $product->description !!}</p>
-                                </div><!-- End .product-desc-content -->
-                            </div><!-- .End .tab-pane -->
-                            <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
-                                <div class="product-desc-content">
-                                    <p>{!! $product->ingredients !!}</p>
-                                </div><!-- End .product-desc-content -->
-                            </div><!-- .End .tab-pane -->
-                            <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
-                                <div class="product-desc-content">
-                                    <p>{!! $product->how_to_use !!}</p>
-                                </div><!-- End .product-desc-content -->
-                            </div><!-- .End .tab-pane -->
-                        </div><!-- End .tab-content -->
-                    </div><!-- End .product-details-tab -->
+                                    <!-- Tab Navigation -->
+                                    <div class="tab-scroll-wrapper">
+                                        <ul class="nav nav-pills justify-content-start px-3" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true">Description</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false">Ingredients</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false">How To Use</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Tab Content -->
+                                    <div class="tab-content px-3 pt-3">
+                                        <div class="tab-pane fade show active" id="product-desc-tab" role="tabpanel" aria-labelledby="product-desc-link">
+                                            <div class="product-desc-content">
+                                                <p>{!! $product->description !!}</p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="product-info-tab" role="tabpanel" aria-labelledby="product-info-link">
+                                            <div class="product-desc-content">
+                                                <p>{!! $product->ingredients !!}</p>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="product-shipping-tab" role="tabpanel" aria-labelledby="product-shipping-link">
+                                            <div class="product-desc-content">
+                                                <p>{!! $product->how_to_use !!}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                             <div class="product-details-footer">
                                 <div class="product-cat">
                                     <span>Category:</span>
