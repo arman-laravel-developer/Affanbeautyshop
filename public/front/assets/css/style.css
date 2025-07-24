@@ -11449,8 +11449,7 @@ button:focus {
 .product-desc-content ul {
   color: #333333; }
   .product-desc-content ul li {
-    position: relative;
-    padding-left: 1.3rem; }
+    position: relative; }
     .product-desc-content ul li:before {
       position: absolute;
       display: block;
