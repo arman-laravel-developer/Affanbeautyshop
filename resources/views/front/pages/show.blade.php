@@ -335,7 +335,7 @@
                                 </div>
 
                                 <!-- WhatsApp Contact Button -->
-                                 
+
                                 <div class="mt-2 text-center" style="margin-top: 10px; width: 100%">
                                     <a href="tel:{{$generalSettingView->mobile}}"
                                         target="_blank"
@@ -367,7 +367,7 @@
 
                                         <div id="inStock" style="display: block;">
                                             @if($product->stock != 0)
-                                                <div class="details-action-wrapper" style="gap: 5%; margin-top: 0!important;padding-bottom: 5%;">
+                                                <div class="details-action-wrapper" style="gap: 5%; margin-top: 0!important;padding-bottom: 8%;">
                                                     <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #00b7c9">
                                                         <i class="fa fa-cart-plus"></i><span>Add to Cart</span>
                                                     </button>

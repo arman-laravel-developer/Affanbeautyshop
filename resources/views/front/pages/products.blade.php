@@ -26,8 +26,8 @@
                     <div class="toolbox">
                         <div class="toolbox-left">
                             <div class="toolbox-info">
-                                Showing <span>{{ $category_products->firstItem() }} - {{ $category_products->lastItem() }}</span> of
-                                  <span>{{ $category_products->total() }}</span> Products
+                                Showing <span>{{ $products->firstItem() }} - {{ $products->lastItem() }}</span> of
+                                  <span>{{ $products->total() }}</span> Products
                             </div><!-- End .toolbox-info -->
                         </div><!-- End .toolbox-left -->
 
@@ -219,7 +219,7 @@
                             @endforeach
 
                         <!-- Last Page Indicator -->
-                            <li class="page-item-total">মধ্যে {{ $products->lastPage() }}</li>
+                            <li class="page-item-total">of {{ $products->lastPage() }}</li>
 
                             <!-- Next Page Link -->
                             @if ($products->hasMorePages())
