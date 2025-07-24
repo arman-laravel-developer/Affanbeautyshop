@@ -84,18 +84,27 @@ class CheckoutController extends Controller
             }
 
             if ($shippingFree) {
-                $currentDate = Carbon::today();
-                $startDate = Carbon::parse($shippingFree->start_date);
-                $endDate = Carbon::parse($shippingFree->end_date);
+    $currentDate = Carbon::today();
+    $startDate = Carbon::parse($shippingFree->start_date);
+    $endDate = Carbon::parse($shippingFree->end_date);
 
-                if ($currentDate->between($startDate, $endDate)) {
-                    if ($shippingFree->type === 'any' && $cartTotalQty >= $shippingFree->qty) {
-                        $isFreeShipping = true;
-                    } elseif ($shippingFree->type === 'category_wise' && $categoryCartQty >= $shippingFree->qty) {
-                        $isFreeShipping = true;
-                    }
-                }
+    if ($currentDate->between($startDate, $endDate)) {
+        if ($shippingFree->type === 'any' && $cartTotalQty >= $shippingFree->qty) {
+            $isFreeShipping = true;
+        } elseif ($shippingFree->type === 'category_wise' && $categoryCartQty >= $shippingFree->qty) {
+            $isFreeShipping = true;
+        } elseif ($shippingFree->type === 'order_total') {
+            $cartTotalAmount = $cartProducts->sum(function ($item) {
+                return $item->price * $item->quantity;
+            });
+
+            if ($cartTotalAmount >= $shippingFree->minimum_purchase) {
+                $isFreeShipping = true;
             }
+        }
+    }
+}
+
 
             return view('front.checkout.index', compact('districts', 'customer', 'shippingCosts', 'isFreeShipping'));
         } else {
