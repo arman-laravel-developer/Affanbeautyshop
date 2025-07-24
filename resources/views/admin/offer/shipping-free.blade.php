@@ -40,6 +40,7 @@
                                 <option value="" selected disabled>Select type</option>
                                 <option value="any" {{ old('type', $shippingFree->type ?? '') == 'any' ? 'selected' : '' }}>Any</option>
                                 <option value="category_wise" {{ old('type', $shippingFree->type ?? '') == 'category_wise' ? 'selected' : '' }}>Category wise</option>
+                                <option value="order_total" {{ old('type', $shippingFree->type ?? '') == 'order_total' ? 'selected' : '' }}>Minimum Purchase Amount</option>
                             </select>
                             @error('type')
                             <div class="alert alert-danger">{{ $message }}</div>
@@ -65,6 +66,20 @@
                             <div class="alert alert-danger">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="row mb-3" id="minPurchaseRow" style="display: none;">
+                            <label for="minimum_purchase" class="col-form-label">Minimum Purchase Amount</label>
+                            <input type="number" class="form-control @error('minimum_purchase') is-invalid @enderror"
+                                value="{{ old('minimum_purchase', $shippingFree->minimum_purchase ?? '') }}"
+                                name="minimum_purchase"
+                                id="minimum_purchase"
+                                placeholder="Minimum purchase amount"
+                                step="0.01"
+                                min="0">
+                            @error('minimum_purchase')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
                         <div class="row mb-3">
                             <label for="date_range" class="form-label">Date Range</label>
                             <input type="text" class="form-control" id="date_range" name="date_range"
@@ -115,22 +130,36 @@
     </script>
 
     <script>
-        function toggleCategory() {
-            const typeSelect = document.getElementById("type");
-            const categoryRow = document.getElementById("categoryNameRow");
+    function toggleCategory() {
+        const typeSelect = document.getElementById("type");
+        const categoryRow = document.getElementById("categoryNameRow");
+        const qtyRow = document.getElementById("qty").closest('.row');
+        const minPurchaseRow = document.getElementById("minPurchaseRow");
 
-            if (typeSelect.value === "any") {
-                categoryRow.style.display = "none";
-            } else {
-                categoryRow.style.display = "block";
-            }
+        // Show/Hide Category Row
+        if (typeSelect.value === "any") {
+            categoryRow.style.display = "none";
+        } else if (typeSelect.value === "category_wise") {
+            categoryRow.style.display = "block";
+        } else {
+            categoryRow.style.display = "none";
         }
 
-        // Run on page load to set initial state based on selected value
-        document.addEventListener("DOMContentLoaded", function() {
-            toggleCategory();
-        });
-    </script>
+        // Show/Hide Quantity and Min Purchase
+        if (typeSelect.value === "order_total") {
+            qtyRow.style.display = "none";
+            minPurchaseRow.style.display = "block";
+        } else {
+            qtyRow.style.display = "block";
+            minPurchaseRow.style.display = "none";
+        }
+    }
+
+    // Run on page load
+    document.addEventListener("DOMContentLoaded", function () {
+        toggleCategory();
+    });
+</script>
 
 
 @endsection
