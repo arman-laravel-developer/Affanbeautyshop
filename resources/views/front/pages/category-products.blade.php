@@ -103,7 +103,7 @@
 
                                                     <a href="{{route('product.show', ['id' => $category_product->id, 'slug' => $category_product->slug])}}"
                                                        class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
-                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                     </a>
                                                 @else
                                                     <form id="buyNowForm{{ $category_product->id }}" action="{{ route('cart.add') }}" method="POST">
@@ -136,7 +136,7 @@
                                                            "
                                                        class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
                                                        style="height: 38px;color: white; background-color: #f89104;">
-                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;এখনই কিনুন</span>
+                                                        <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                     </a>
                                                 @endif
                                             </div>
