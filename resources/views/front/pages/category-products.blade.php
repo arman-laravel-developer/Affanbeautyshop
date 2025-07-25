@@ -98,11 +98,11 @@
                                             <div class="d-flex w-100 " style="gap: 5%">
                                                 @if(isset($category_product->variants) && $category_product->variants->isNotEmpty())
                                                     <a href="{{route('product.show', ['id' => $category_product->id, 'slug' => $category_product->slug])}}" class="btn-outline-primary d-flex align-items-center justify-content-center" style="width: 42px; height: 38px; border: #cc9966; background-color: whitesmoke">
-                                                        <i class="fas fa-shopping-cart"></i>
+                                                        <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                                     </a>
 
                                                     <a href="{{route('product.show', ['id' => $category_product->id, 'slug' => $category_product->slug])}}"
-                                                       class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
+                                                       class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #c14196;">
                                                         <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                     </a>
                                                 @else
@@ -126,7 +126,7 @@
                                                             data-product-image="{{ asset($category_product->thumbnail_img) }}"
                                                             class="btn-outline-primary d-flex align-items-center justify-content-center me-2"
                                                             style="width: 42px; height: 38px; border: 0px; background-color: whitesmoke;">
-                                                        <i class="fas fa-shopping-cart"></i>
+                                                        <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                                     </button>
 
                                                     <a href="javascript:void(0);"
@@ -135,7 +135,7 @@
                                                            document.getElementById('buyNowForm{{ $category_product->id }}').submit();
                                                            "
                                                        class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
-                                                       style="height: 38px;color: white; background-color: #f89104;">
+                                                       style="height: 38px;color: white; background-color: #c14196;">
                                                         <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                     </a>
                                                 @endif
