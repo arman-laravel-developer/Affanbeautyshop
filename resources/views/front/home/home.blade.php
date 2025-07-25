@@ -139,7 +139,7 @@
                             <div class="d-flex w-100 " style="gap: 5%">
                                 @if(isset($featuredProduct->variants) && $featuredProduct->variants->isNotEmpty())
                                     <a href="{{route('product.show', ['id' => $featuredProduct->id, 'slug' => $featuredProduct->slug])}}" class="btn-outline-primary d-flex align-items-center justify-content-center" style="width: 42px; height: 38px; border: #cc9966; background-color: whitesmoke">
-                                        <i class="fas fa-shopping-cart"></i>
+                                        <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                     </a>
 
                                     <a href="{{route('product.show', ['id' => $featuredProduct->id, 'slug' => $featuredProduct->slug])}}"
@@ -167,7 +167,7 @@
                                             data-product-image="{{ asset($featuredProduct->thumbnail_img) }}"
                                             class="btn-outline-primary d-flex align-items-center justify-content-center me-2"
                                             style="width: 42px; height: 38px; border: 0px; background-color: whitesmoke;">
-                                        <i class="fas fa-shopping-cart"></i>
+                                        <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                     </button>
 
                                     <a href="javascript:void(0);"
@@ -246,7 +246,7 @@
                                         <div class="d-flex w-100 " style="gap: 5%">
                                             @if(isset($categoryWiseProduct->variants) && $categoryWiseProduct->variants->isNotEmpty())
                                                 <a href="{{route('product.show', ['id' => $categoryWiseProduct->id, 'slug' => $categoryWiseProduct->slug])}}" class="btn-outline-primary d-flex align-items-center justify-content-center" style="width: 42px; height: 38px; border: #cc9966; background-color: whitesmoke">
-                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                                 </a>
 
                                                 <a href="{{route('product.show', ['id' => $categoryWiseProduct->id, 'slug' => $categoryWiseProduct->slug])}}"
@@ -274,7 +274,7 @@
                                                         data-product-image="{{ asset($categoryWiseProduct->thumbnail_img) }}"
                                                         class="btn-outline-primary d-flex align-items-center justify-content-center me-2"
                                                         style="width: 42px; height: 38px; border: 0px; background-color: whitesmoke;">
-                                                    <i class="fas fa-shopping-cart"></i>
+                                                    <i class="fas fa-shopping-cart" style="color: #c14196;"></i>
                                                 </button>
 
                                                 <a href="javascript:void(0);"
