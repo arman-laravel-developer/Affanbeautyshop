@@ -143,13 +143,13 @@
                 {{-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li> --}}
                 <li><a href="{{route('about.us')}}">About Us</a></li>
                 <li><a href="{{route('contact.us')}}">Contact Us</a></li>
-                <li><a href="{{route('all.products')}}">Products</a></li>
+            </ul>
+            <li><a href="{{route('all.products')}}">Products</a></li>
                 @if(Session::get('customer_id'))
                     <li><a href="{{route('customer.dashboard')}}"><i class="icon-user"></i>Dashboard</a></li>
                 @else
                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                 @endif
-            </ul>
         </li>
     </ul>
                 </div>
