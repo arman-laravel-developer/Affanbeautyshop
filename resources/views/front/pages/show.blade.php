@@ -336,14 +336,14 @@
 
                                 <!-- WhatsApp Contact Button -->
 
-                                <div class="mt-2 text-center" style="margin-top: 10px; width: 100%">
-                                    <a href="tel:{{$generalSettingView->mobile}}"
-                                        target="_blank"
-                                        class="btn-product"
-                                        style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">
-                                            Call Now &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>
-                                        </a>
-                                </div>
+{{--                                <div class="mt-2 text-center" style="margin-top: 10px; width: 100%">--}}
+{{--                                    <a href="tel:{{$generalSettingView->mobile}}"--}}
+{{--                                        target="_blank"--}}
+{{--                                        class="btn-product"--}}
+{{--                                        style="background-color: #565656; color: #ffffff; line-height: 2 !important; padding: 0.75rem 1.5rem; border-radius: 0.25rem;text-decoration: none">--}}
+{{--                                            Call Now &nbsp; <span style="color: #f89104"><i class="fa fa-phone"></i> &nbsp; {{$generalSettingView->mobile}}</span>--}}
+{{--                                        </a>--}}
+{{--                                </div>--}}
                                 <div class="mb-3 text-center" style="margin-top: 10px; width: 100%">
                                     <a href="https://wa.me/{{$generalSettingView->pinterest_url}}?text={{ urlencode('i am interested this product: ' . route('product.show', ['id' => $product->id, 'slug' => $product->slug])) }}"
                                        target="_blank"
