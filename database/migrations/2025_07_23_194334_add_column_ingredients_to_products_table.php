@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('products', function (Blueprint $table) {
-            $table->text('ingredients')->nullable()->after('description');
-            $table->text('how_to_use')->nullable()->after('ingredients');
+            $table->longtext('ingredients')->nullable()->after('description');
+            $table->longtext('how_to_use')->nullable()->after('ingredients');
         });
     }
 
