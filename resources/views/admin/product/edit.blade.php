@@ -303,7 +303,7 @@
                                 <div class="row">
                                     <label class="col-md-3 col-form-label">Ingredients</label>
                                     <div class="col-md-9">
-                                        <textarea type="text" name="ingredients" id="summernote1" class="form-control @error('ingredients') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter ingredients" required><{{$product->ingredients}}/textarea>
+                                        <textarea type="text" name="ingredients" id="summernote1" class="form-control @error('ingredients') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter ingredients" required>{{$product->ingredients}}</textarea>
                                         @error('ingredients')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
