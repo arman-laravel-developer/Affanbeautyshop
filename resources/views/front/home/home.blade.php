@@ -143,7 +143,7 @@
                                     </a>
 
                                     <a href="{{route('product.show', ['id' => $featuredProduct->id, 'slug' => $featuredProduct->slug])}}"
-                                       class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
+                                       class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #c14196;">
                                         <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                     </a>
                                 @else
@@ -176,7 +176,7 @@
                                            document.getElementById('buyNowForm{{ $featuredProduct->id }}').submit();
                                            "
                                        class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
-                                       style="height: 38px;color: white; background-color: #f89104;">
+                                       style="height: 38px;color: white; background-color: #c14196;">
                                         <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                     </a>
                                 @endif
@@ -250,7 +250,7 @@
                                                 </a>
 
                                                 <a href="{{route('product.show', ['id' => $categoryWiseProduct->id, 'slug' => $categoryWiseProduct->slug])}}"
-                                                   class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #f89104;">
+                                                   class=" btn-primary text-white d-flex justify-content-center align-items-center flex-fill" style="height: 38px;color: white; background-color: #c14196;">
                                                     <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                 </a>
                                             @else
@@ -283,7 +283,7 @@
                                                        document.getElementById('buyNowForm{{ $categoryWiseProduct->id }}').submit();
                                                        "
                                                    class="btn-primary text-white d-flex justify-content-center align-items-center flex-fill"
-                                                   style="height: 38px;color: white; background-color: #f89104;">
+                                                   style="height: 38px;color: white; background-color: #c14196;">
                                                     <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                 </a>
                                             @endif
