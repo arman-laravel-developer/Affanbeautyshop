@@ -303,7 +303,7 @@
                                 <div class="row">
                                     <label class="col-md-3 col-form-label">Ingredients</label>
                                     <div class="col-md-9">
-                                        <textarea type="text" name="ingredients" id="summernote1" class="form-control @error('ingredients') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter ingredients" required>{{$product->ingredients}}</textarea>
+                                        <textarea type="text" name="ingredients" id="summernote1" class="form-control @error('ingredients') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter ingredients">{{$product->ingredients}}</textarea>
                                         @error('ingredients')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -315,7 +315,7 @@
                                 <div class="row">
                                     <label class="col-md-3 col-form-label">How to use</label>
                                     <div class="col-md-9">
-                                        <textarea type="text" name="how_to_use" id="summernote2" class="form-control @error('how_to_use') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter how to use" required>{{$product->how_to_use}}</textarea>
+                                        <textarea type="text" name="how_to_use" id="summernote2" class="form-control @error('how_to_use') is-invalid @enderror" aria-describedby="emailHelp" placeholder="Enter how to use">{{$product->how_to_use}}</textarea>
                                         @error('how_to_use')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
