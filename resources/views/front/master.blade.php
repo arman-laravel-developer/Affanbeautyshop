@@ -135,183 +135,187 @@
     <header class="header header-7">
         <div class="header-top">
             <div class="container-fluid">
-                <div class="header-left">
-                    <div class="header-dropdown">
-                        <a href="javascript:void(0)">BDT</a>
-                        <div class="header-menu">
-                            <ul>
-                                <li><a href="javascript:void(0)">USD</a></li>
-                                <li><a href="javascript:void(0)">BDT</a></li>
-                            </ul>
-                        </div><!-- End .header-menu -->
-                    </div><!-- End .header-dropdown -->
+{{--                <div class="header-left">--}}
+{{--                    <div class="header-dropdown">--}}
+{{--                        <a href="javascript:void(0)">BDT</a>--}}
+{{--                        <div class="header-menu">--}}
+{{--                            <ul>--}}
+{{--                                <li><a href="javascript:void(0)">USD</a></li>--}}
+{{--                                <li><a href="javascript:void(0)">BDT</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div><!-- End .header-menu -->--}}
+{{--                    </div><!-- End .header-dropdown -->--}}
 
-                    <div class="header-dropdown">
-                        <a href="javascript:void(0)">Eng</a>
-                        <div class="header-menu">
-                            <ul>
-                                <li><a href="javascript:void(0)">English</a></li>
-                                <li><a href="javascript:void(0)">Bangla</a></li>
-                                <li><a href="javascript:void(0)">Spanish</a></li>
-                            </ul>
-                        </div><!-- End .header-menu -->
-                    </div><!-- End .header-dropdown -->
-                </div><!-- End .header-left -->
+{{--                    <div class="header-dropdown">--}}
+{{--                        <a href="javascript:void(0)">Eng</a>--}}
+{{--                        <div class="header-menu">--}}
+{{--                            <ul>--}}
+{{--                                <li><a href="javascript:void(0)">English</a></li>--}}
+{{--                                <li><a href="javascript:void(0)">Bangla</a></li>--}}
+{{--                                <li><a href="javascript:void(0)">Spanish</a></li>--}}
+{{--                            </ul>--}}
+{{--                        </div><!-- End .header-menu -->--}}
+{{--                    </div><!-- End .header-dropdown -->--}}
+{{--                </div><!-- End .header-left -->--}}
 
                 <div class="header-right">
                     <ul class="top-menu">
-                        <li>
-                            <a href="#">Links</a>
-                            <ul>
-                                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
-                                {{-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li> --}}
-                                <li><a href="{{route('about.us')}}">About Us</a></li>
-                                <li><a href="{{route('contact.us')}}">Contact Us</a></li>
-                                <li><a href="{{route('all.products')}}">Products</a></li>
-                                @if(Session::get('customer_id'))
-                                    <li><a href="{{route('customer.dashboard')}}"><i class="icon-user"></i>Dashboard</a></li>
-                                @else
-                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
-                                @endif
-                            </ul>
-                        @else
-                            <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
-                        @endif
-                    </ul>
-                    <div class="header-middle sticky-header">
-                        <div class="container-fluid">
-                            <div class="header-left">
-                                <button class="mobile-menu-toggler">
-                                    <span class="sr-only">Toggle mobile menu</span>
-                                    <i class="icon-bars"></i>
-                                </button>
+                        <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
+{{--                        <li>--}}
+{{--                            <a href="#">Links</a>--}}
+{{--                            <ul>--}}
+{{--                                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>--}}
+{{--                                --}}{{--                                <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li>--}}
+{{--                                <li><a href="{{route('about.us')}}">About Us</a></li>--}}
+{{--                                <li><a href="{{route('contact.us')}}">Contact Us</a></li>--}}
+{{--                                <li><a href="{{route('all.products')}}">Products</a></li>--}}
+{{--                                @if(Session::get('customer_id'))--}}
+{{--                                    <li><a href="{{route('customer.dashboard')}}"><i class="icon-user"></i>Dashboard</a></li>--}}
+{{--                                @else--}}
+{{--                                    <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>--}}
+{{--                                @endif--}}
+{{--                            </ul>--}}
+{{--                        </li>--}}
+                    </ul><!-- End .top-menu -->
+                </div><!-- End .header-right -->
+            </div><!-- End .container-fluid -->
+        </div><!-- End .header-top -->
 
-                                <a href="{{route('home')}}" class="logo">
-                                    <img src="{{asset($generalSettingView->header_logo)}}" alt="{{$generalSettingView->site_name}} Logo" width="161" height="25">
-                                </a>
+        <div class="header-middle sticky-header">
+            <div class="container-fluid">
+                <div class="header-left">
+                    <button class="mobile-menu-toggler">
+                        <span class="sr-only">Toggle mobile menu</span>
+                        <i class="icon-bars"></i>
+                    </button>
 
-                                <nav class="main-nav">
-                                    <ul class="menu sf-arrows">
-                                        <li class="megamenu-container active">
-                                            <a href="{{route('home')}}" class="">Home</a>
-                                        </li>
-                                        @foreach($menuCategories as $menuCategory)
-                                            <li>
-                                                <a href="{{route('category.product', ['id' => $menuCategory->id])}}" class="">{{$menuCategory->category_name}}</a>
-                                                @if(count($menuCategory->subCategories) > 0)
-                                                    <div class="megamenu megamenu-sm">
-                                                        <div class="row no-gutters">
-                                                            <div class="col-md-12">
-                                                                <div class="menu-col">
-                                                                    <ul>
-                                                                        @foreach($menuCategory->subCategories as $subCategory)
-                                                                            <li class="menu-title">
-                                                                                <a href="{{route('category.product', ['id' => $subCategory->id])}}">{{$subCategory->category_name}}</a>
-                                                                            </li>
-                                                                        @endforeach
-                                                                    </ul>
-                                                                </div><!-- End .menu-col -->
-                                                            </div><!-- End .col-md-12 -->
-                                                        </div><!-- End .row -->
-                                                    </div><!-- End .megamenu megamenu-sm -->
-                                                @endif
-                                            </li>
-                                        @endforeach
-                                    </ul><!-- End .menu -->
-                                </nav><!-- End .main-nav -->
-                            </div><!-- End .header-left -->
+                    <a href="{{route('home')}}" class="logo">
+                        <img src="{{asset($generalSettingView->header_logo)}}" alt="{{$generalSettingView->site_name}} Logo" width="161" height="25">
+                    </a>
 
-                            <div class="header-right">
-                                <div class="header-search header-search-extended header-search-visible">
-                                    <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                                    <form action="{{ route('product.search') }}" method="get">
-                                        <div class="header-search-wrapper search-wrapper-wide">
-                                            <label for="q" class="sr-only">Search</label>
-                                            <input type="search" class="form-control" name="q" id="q" placeholder="Search products..." autocomplete="off" required>
-                                            <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
-                                        </div><!-- End .header-search-wrapper -->
-                                        <!-- Suggestions list -->
-                                        <ul id="suggestions" class="list-group" style="display: none;"></ul>
-                                    </form>
-                                </div><!-- End .header-search -->
 
-                                <style>
-                                    .dropdown-menu {
-                                        width: 300px; /* Adjust width as needed */
-                                        max-height: 400px; /* Set a fixed height */
-                                        overflow: hidden;
-                                        display: flex;
-                                        flex-direction: column;
-                                    }
+                    <nav class="main-nav">
+                        <ul class="menu sf-arrows">
+                            <li class="megamenu-container active">
+                                <a href="{{route('home')}}" class="">Home</a>
+                            </li>
+                            @foreach($menuCategories as $menuCategory)
+                                <li>
+                                    <a href="{{route('category.product', ['id' => $menuCategory->id])}}" class="">{{$menuCategory->category_name}}</a>
+                                    @if(count($menuCategory->subCategories) > 0)
+                                        <div class="megamenu megamenu-sm">
+                                            <div class="row no-gutters">
+                                                <div class="col-md-12">
+                                                    <div class="menu-col">
+                                                        <ul>
+                                                            @foreach($menuCategory->subCategories as $subCategory)
+                                                                <li class="menu-title">
+                                                                    <a href="{{route('category.product', ['id' => $subCategory->id])}}">{{$subCategory->category_name}}</a>
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div><!-- End .menu-col -->
+                                                </div><!-- End .col-md-8 -->
+                                            </div><!-- End .row -->
+                                        </div><!-- End .megamenu megamenu-md -->
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul><!-- End .menu -->
+                    </nav><!-- End .main-nav -->
+                </div><!-- End .header-left -->
 
-                                    .dropdown-cart-products {
-                                        max-height: 250px; /* Height for scrollable area */
-                                        overflow-y: auto;
-                                        padding: 10px;
-                                    }
+                <div class="header-right">
+                    <div class="header-search header-search-extended header-search-visible">
+                        <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
+                        <form action="{{ route('product.search') }}" method="get">
+                            <div class="header-search-wrapper search-wrapper-wide">
+                                <label for="q" class="sr-only">Search</label>
+                                <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." autocomplete="off" required>
+                                <button class="btn btn-primary" type="submit"><i class="icon-search"></i></button>
+                            </div><!-- End .header-search-wrapper -->
+                            <!-- Suggestions list -->
+                            <ul id="suggestions" class="list-group" style="display: none;"></ul>
+                        </form>
+                    </div><!-- End .header-search -->
 
-                                    .dropdown-cart-bottom {
-                                        position: sticky;
-                                        bottom: 0;
-                                        background: #fff;
-                                        padding: 10px;
-                                        border-top: 1px solid #ddd;
-                                    }
-                                </style>
+                    <style>
+                        .dropdown-menu {
+                            width: 300px; /* Adjust width as needed */
+                            max-height: 400px; /* Set a fixed height */
+                            overflow: hidden;
+                            display: flex;
+                            flex-direction: column;
+                        }
 
-                                <div class="dropdown cart-dropdown">
-                                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
-                                        <i class="icon-shopping-cart"></i>
-                                        <span class="cart-count">{{count($cartProducts)}}</span>
-                                    </a>
+                        .dropdown-cart-products {
+                            max-height: 250px; /* Height for scrollable area */
+                            overflow-y: auto;
+                            padding: 10px;
+                        }
 
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-cart-products">
-                                            @foreach($cartProducts as $cartProduct)
-                                                @php
-                                                    $product = \App\Models\Product::find($cartProduct->attributes->product_id);
-                                                @endphp
-                                                <div class="product">
-                                                    <div class="product-cart-details">
-                                                        <h4 class="product-title">
-                                                            <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}">{{$cartProduct->name}}</a>
-                                                        </h4>
-                                                        <span class="cart-product-info">
-                                        <span class="cart-product-qty">{{$cartProduct->quantity}}</span>
-                                        x &#2547;{{number_format($cartProduct->price)}}
-                                    </span>
-                                                    </div>
-                                                    <figure class="product-image-container">
-                                                        <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}" class="product-image">
-                                                            <img src="{{asset($cartProduct->attributes->thumbnail_image)}}" alt="product">
-                                                        </a>
-                                                    </figure>
-                                                    <a href="#" class="btn-remove" title="Remove Product" data-product-id="{{$cartProduct->id}}">
-                                                        <i class="icon-close"></i>
-                                                    </a>
-                                                </div>
-                                            @endforeach
+                        .dropdown-cart-bottom {
+                            position: sticky;
+                            bottom: 0;
+                            background: #fff;
+                            padding: 10px;
+                            border-top: 1px solid #ddd;
+                        }
+                    </style>
+
+                    <div class="dropdown cart-dropdown">
+                        <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                            <i class="icon-shopping-cart"></i>
+                            <span class="cart-count">{{count($cartProducts)}}</span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-cart-products">
+                                @foreach($cartProducts as $cartProduct)
+                                    @php
+                                        $product = \App\Models\Product::find($cartProduct->attributes->product_id);
+                                    @endphp
+                                    <div class="product">
+                                        <div class="product-cart-details">
+                                            <h4 class="product-title">
+                                                <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}">{{$cartProduct->name}}</a>
+                                            </h4>
+                                            <span class="cart-product-info">
+                            <span class="cart-product-qty">{{$cartProduct->quantity}}</span>
+                            x &#2547;{{number_format($cartProduct->price)}}
+                        </span>
                                         </div>
-
-                                        <div class="dropdown-cart-bottom">
-                                            <div class="dropdown-cart-total">
-                                                <span>Total</span>
-                                                @php($total = Cart::getTotal())
-                                                <span class="cart-total-price">&#2547;{{number_format($total)}}</span>
-                                            </div>
-
-                                            <div class="dropdown-cart-action">
-                                                <a href="{{route('cart.index')}}" class="btn btn-primary" style="margin-right: 2%">View Cart</a>
-                                                <a href="{{route('checkout')}}" class="btn btn-outline-primary-2">
-                                                    <span>Checkout</span><i class="icon-long-arrow-right"></i>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        <figure class="product-image-container">
+                                            <a href="{{route('product.show', ['id' => $cartProduct->attributes->product_id, 'slug' => $product->slug])}}" class="product-image">
+                                                <img src="{{asset($cartProduct->attributes->thumbnail_image)}}" alt="product">
+                                            </a>
+                                        </figure>
+                                        <a href="#" class="btn-remove" title="Remove Product" data-product-id="{{$cartProduct->id}}">
+                                            <i class="icon-close"></i>
+                                        </a>
                                     </div>
+                                @endforeach
+                            </div>
+
+                            <div class="dropdown-cart-bottom">
+                                <div class="dropdown-cart-total">
+                                    <span>Total</span>
+                                    @php($total = Cart::getTotal())
+                                    <span class="cart-total-price">&#2547;{{number_format($total)}}</span>
                                 </div>
-                            </div><!-- End .header-right -->
-                        </div><!-- End .container-fluid -->
-                    </div><!-- End .header-middle -->
+
+                                <div class="dropdown-cart-action">
+                                    <a href="{{route('cart.index')}}" class="btn btn-primary" style="margin-right: 2%">View Cart</a>
+                                    <a href="{{route('checkout')}}" class="btn btn-outline-primary-2">
+                                        <span>Checkout</span><i class="icon-long-arrow-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- End .header-right -->
+            </div><!-- End .container-fluid -->
+        </div><!-- End .header-middle -->
     </header><!-- End .header -->
     <main class="main">
         @yield('body')
