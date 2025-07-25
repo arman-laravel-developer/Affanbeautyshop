@@ -134,33 +134,12 @@
     <header class="header header-7">
         <div class="header-top">
             <div class="container-fluid">
-{{--                <div class="header-left">--}}
-{{--                    <div class="header-dropdown">--}}
-{{--                        <a href="javascript:void(0)">BDT</a>--}}
-{{--                        <div class="header-menu">--}}
-{{--                            <ul>--}}
-{{--                                <li><a href="javascript:void(0)">USD</a></li>--}}
-{{--                                <li><a href="javascript:void(0)">BDT</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div><!-- End .header-menu -->--}}
-{{--                    </div><!-- End .header-dropdown -->--}}
-
-{{--                    <div class="header-dropdown">--}}
-{{--                        <a href="javascript:void(0)">Eng</a>--}}
-{{--                        <div class="header-menu">--}}
-{{--                            <ul>--}}
-{{--                                <li><a href="javascript:void(0)">English</a></li>--}}
-{{--                                <li><a href="javascript:void(0)">Bangla</a></li>--}}
-{{--                                <li><a href="javascript:void(0)">Spanish</a></li>--}}
-{{--                            </ul>--}}
-{{--                        </div><!-- End .header-menu -->--}}
-{{--                    </div><!-- End .header-dropdown -->--}}
-{{--                </div><!-- End .header-left -->--}}
-
                 <div class="header-right">
     <ul class="top-menu">
         <li>
-             <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
+            <a href="#">Links</a>
+            <ul>
+                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
                 {{-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li> --}}
                 <li><a href="{{route('about.us')}}">About Us</a></li>
                 <li><a href="{{route('contact.us')}}">Contact Us</a></li>
@@ -170,14 +149,11 @@
                 @else
                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                 @endif
+            </ul>
         </li>
-    </ul><!-- End .top-menu -->
-</div><!-- End .header-right -->
-
-            </div><!-- End .container-fluid -->
-        </div><!-- End .header-top -->
-
-        <div class="header-middle sticky-header">
+    </ul>
+                </div>
+    <div class="header-middle sticky-header">
     <div class="container-fluid">
         <div class="header-left">
             <button class="mobile-menu-toggler">
@@ -311,6 +287,7 @@
         </div><!-- End .header-right -->
     </div><!-- End .container-fluid -->
 </div><!-- End .header-middle -->
+            </div>
     </header><!-- End .header -->
 
 
