@@ -174,6 +174,7 @@
                                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                                 @endif
                             </ul>
+                        </li>
                     </ul>
                     <div class="header-middle sticky-header">
                         <div class="container-fluid">
