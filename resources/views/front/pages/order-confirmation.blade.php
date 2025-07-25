@@ -171,11 +171,11 @@
                         <h5 class="text-success font-weight-bold mb-3">Need Help or Have Questions?</h5>
                         <p class="mb-3">We're here to help you. Connect with us anytime for assistance.</p>
                         <div class="d-flex justify-content-center align-items-center gap-3 flex-wrap">
-                            <a href="{{ $generalSetting->facebook_url }}" target="_blank" class="btn btn-outline-primary px-4">
+                            <a href="{{ $generalSettingView->facebook_url }}" target="_blank" class="btn btn-outline-primary px-4">
                                 <i class="fab fa-facebook-f"></i> Visit Our Facebook Page
                             </a>
-                            <a href="tel:+88{{ $generalSetting->mobile }}" class="btn btn-outline-success px-4">
-                                <i class="fas fa-phone"></i> Call Us: {{ $generalSetting->mobile }}
+                            <a href="tel:+88{{ $generalSettingView->mobile }}" class="btn btn-outline-success px-4">
+                                <i class="fas fa-phone"></i> Call Us: {{ $generalSettingView->mobile }}
                             </a>
                         </div>
                     </div>
