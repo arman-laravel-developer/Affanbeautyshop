@@ -203,7 +203,7 @@
                         item_name : "{{ $orderDetail->product->name }}",
                         item_id : "{{ $orderDetail->product_id }}",
                         price : "{{ $orderDetail->price }}",
-                        item_brand : "{{ $orderDetail->product->brand->name }}",
+                        item_brand : "{{ $orderDetail->product->brand->name ?? $generalSettingView->site_name }}",
                         item_category: "{{ $orderDetail->product->category->category_name ?? '' }}",
                         item_variant : "{{ $orderDetail->size_id ? $orderDetail->size->name : '' }}{{ $orderDetail->size_id && $orderDetail->color_id ? ' / ' : '' }}{{ $orderDetail->color_id ? $orderDetail->color->name : '' }}",
                         quantity : {{ $orderDetail->qty }}
