@@ -371,7 +371,7 @@
                                                     <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #8870c6">
                                                         <i class="fa fa-cart-plus"></i><span>Add to Cart</span>
                                                     </button>
-                                                    <button type="submit" id="addToBuyBtn" name="button" value="2" class="btn-product" style="height: 50px; text-decoration: none; color: white; background-color: #f89104; border: none">
+                                                    <button type="submit" id="addToBuyBtn" name="button" value="2" class="btn-product" style="height: 50px; text-decoration: none; color: white; background-color: #c14196; border: none">
                                                         <i class="fa fa-bolt"></i><span class="text-white">&nbsp;Buy Now</span>
                                                     </button>
                                                 </div>
@@ -443,12 +443,16 @@
                                             <li class="nav-item">
                                                 <a class="nav-link active" id="product-desc-link" data-toggle="tab" href="#product-desc-tab" role="tab" aria-controls="product-desc-tab" aria-selected="true"><b>Description</b></a>
                                             </li>
+                                            @if(!empty($product->ingredients))
                                             <li class="nav-item">
                                                 <a class="nav-link" id="product-info-link" data-toggle="tab" href="#product-info-tab" role="tab" aria-controls="product-info-tab" aria-selected="false"><b>Ingredients</b></a>
                                             </li>
+                                            @endif
+                                            @if(!empty($product->how_to_use))
                                             <li class="nav-item">
                                                 <a class="nav-link" id="product-shipping-link" data-toggle="tab" href="#product-shipping-tab" role="tab" aria-controls="product-shipping-tab" aria-selected="false"><b>How To Use</b></a>
                                             </li>
+                                                @endif
                                         </ul>
                                     </div>
 
