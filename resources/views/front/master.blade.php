@@ -160,9 +160,7 @@
                 <div class="header-right">
     <ul class="top-menu">
         <li>
-            <a href="#">Links</a>
-            <ul>
-                <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
+             <li><a href="tel:{{$generalSettingView->mobile}}"><i class="icon-phone"></i>Call: {{$generalSettingView->mobile}}</a></li>
                 {{-- <li><a href="wishlist.html"><i class="icon-heart-o"></i>My Wishlist <span>(3)</span></a></li> --}}
                 <li><a href="{{route('about.us')}}">About Us</a></li>
                 <li><a href="{{route('contact.us')}}">Contact Us</a></li>
@@ -172,7 +170,6 @@
                 @else
                     <li><a href="#signin-modal" data-toggle="modal"><i class="icon-user"></i>Login</a></li>
                 @endif
-            </ul>
         </li>
     </ul><!-- End .top-menu -->
 </div><!-- End .header-right -->
