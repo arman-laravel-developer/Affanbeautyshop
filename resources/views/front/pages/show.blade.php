@@ -368,7 +368,7 @@
                                         <div id="inStock" style="display: block;">
                                             @if($product->stock != 0)
                                                 <div class="details-action-wrapper" style="gap: 5%; margin-top: 0!important;padding-bottom: 8%;">
-                                                    <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #00b7c9">
+                                                    <button type="button" id="addToCartBtn" class="btn btn-sm" style="min-width: 0;height: 50px; color: white; background-color: #8870c6">
                                                         <i class="fa fa-cart-plus"></i><span>Add to Cart</span>
                                                     </button>
                                                     <button type="submit" id="addToBuyBtn" name="button" value="2" class="btn-product" style="height: 50px; text-decoration: none; color: white; background-color: #f89104; border: none">
